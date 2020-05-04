@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>06_고지형_네비게이터_모델_모델링</title>
+<title>06_고지형_네비게이터_모델_상품추천</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13091,8 +13091,8 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="import-&amp;-load-data">import &amp; load data<a class="anchor-link" href="#import-&amp;-load-data">&#182;</a></h1><ul>
-<li>회원: 고객정보데이터 내 성별, 연령에 대한 정보가 있는 clnt_id를 회원으로 간주합니다.</li>
-<li>비회원: 회원이 아닌 clnt_id를 비회원으로 간주합니다.</li>
+<li>회원: 고객정보데이터 내 성별, 연령에 대한 정보가 있는 <code>clnt_id</code></li>
+<li>비회원: 회원이 아닌 <code>clnt_id</code></li>
 </ul>
 
 </div>
@@ -13320,7 +13320,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>거래정보데이터(df2trade)는 clnt_id, trans_seq를 기준으로 정렬합니다.</li>
+<li>거래정보데이터(<code>df2trade</code>)는 <code>clnt_id</code>, <code>trans_seq</code>를 기준으로 정렬합니다.</li>
 </ul>
 
 </div>
@@ -13456,21 +13456,21 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="data-preprocessing">data preprocessing<a class="anchor-link" href="#data-preprocessing">&#182;</a></h1><ul>
-<li><code>df3_known</code>: 고객정보데이터(df3custom)에서 unknown과 10대를 제외한 뒤 clnt_type을 부여합니다.<ul>
-<li>여성(F)의 clnt_type <ul>
-<li>20대부터 60대까지 각각 0, 1, 2, 3, 4의 clnt_type 부여합니다.</li>
+<li><code>df3_known</code>: 고객정보데이터(<code>df3custom</code>)에서 unknown과 10대를 제외한 뒤 고객유형(<code>clnt_type</code>)을 부여합니다.<ul>
+<li>여성(F)의 <code>clnt_type</code> <ul>
+<li>20대부터 60대까지 각각 0, 1, 2, 3, 4을 부여합니다.</li>
 </ul>
 </li>
-<li>남성(M)의 clnt_type<ul>
-<li>20대부터 60대까지 각각 5, 6, 7, 8, 9의 clnt_type 부여합니다.</li>
+<li>남성(M)의 <code>clnt_type</code><ul>
+<li>20대부터 60대까지 각각 5, 6, 7, 8, 9를 부여합니다.</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><code>df1_known</code>: 온라인행동정보데이터(df1online)에서 회원만을 추출한 데이터입니다.</li>
-<li><code>df1_transO</code>: df1_known에서 거래가 적어도 한번 발생한 세션만을 추출한 데이터입니다.</li>
-<li><code>df2_df4</code>: 거래정보데이터(df2trade)와 상품정보(df4item)을 병합한 데이터입니다.</li>
-<li><code>df_merged</code>: 네비게이터 모델에서 활용할 데이터프레임을 만드는 과정을 겪는 데이터입니다.</li>
+<li><code>df1_known</code>: 온라인행동정보데이터(<code>df1online</code>)에서 회원만 추출한 데이터입니다.</li>
+<li><code>df1_transO</code>: <code>df1_known</code>에서 거래가 적어도 한번 발생한 세션만을 추출한 데이터입니다.</li>
+<li><code>df2_df4</code>: 거래정보데이터(<code>df2trade</code>)와 상품정보데이터(<code>df4item</code>)를 병합한 데이터입니다.</li>
+<li><code>df_merged</code>: 네비게이터 모델에서 활용할 데이터프레임을 만드는 과정의 데이터입니다.</li>
 </ul>
 
 </div>
@@ -13480,9 +13480,9 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="df3_known">df3_known<a class="anchor-link" href="#df3_known">&#182;</a></h2><ul>
-<li>고객정보데이터(df3custom)에서 unknown과 10대를 제외한 데이터입니다.<ul>
-<li>이 데이터에 <code>clnt_type</code>을 부여합니다.</li>
-<li>부여한 <code>clnt_type</code>을 <code>clnt_id</code>를 기준으로 온라인행동데이터(df1online)에 join할 예정입니다.</li>
+<li>고객정보데이터(<code>df3custom</code>)에서 unknown과 10대를 제외한 데이터입니다.<ul>
+<li>이 데이터에 고객 유형(<code>clnt_type</code>)을 부여합니다.</li>
+<li><code>clnt_id</code>를 기준으로 <code>clnt_type</code>을 온라인행동데이터(<code>df1online</code>)에 merge할 예정입니다.</li>
 </ul>
 </li>
 </ul>
@@ -13596,7 +13596,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>clnt_type 변수를 부여합니다.</li>
+<li>고객유형(<code>clnt_type</code>) 변수를 부여합니다.</li>
 </ul>
 
 </div>
@@ -13886,8 +13886,29 @@ Name: clnt_type, dtype: int64</pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df1_known</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;./navigator/#2 df1_known.csv&#39;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
-<span class="c1"># 데이터 불러오기</span>
-<span class="n">df1_known</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./navigator/#2 df1_known.csv&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>데이터 불러오기</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df1_known</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./navigator/#2 df1_known.csv&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13927,37 +13948,13 @@ Name: clnt_type, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># trans_id 가 있는 세션만 가져옴</span>
 <span class="n">df1_transO</span> <span class="o">=</span> <span class="n">df1_known</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_id&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="n">det_</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df1_transO</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df1_transO</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df1_transO</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">df1_transO</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -14122,8 +14119,6 @@ Name: clnt_type, dtype: int64</pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df1_transO</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;./navigator/#3 df1_transO.csv&#39;</span><span class="p">,</span><span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
-<span class="c1"># 데이터 불러오기</span>
-<span class="n">df1_transO</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./navigator/#3 df1_transO.csv&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14337,7 +14332,7 @@ Name: clnt_type, dtype: int64</pre>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>저장해둔 데이터 불러오기</li>
+<li>데이터 불러오기</li>
 </ul>
 
 </div>
@@ -14359,59 +14354,46 @@ Name: clnt_type, dtype: int64</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#45348;&#48708;&#44172;&#51060;&#53552;-&#47784;&#45944;&#50640;-&#47582;&#45716;-&#45936;&#51060;&#53552;&#54532;&#47112;&#51076;-&#54805;&#49457;">&#45348;&#48708;&#44172;&#51060;&#53552; &#47784;&#45944;&#50640; &#47582;&#45716; &#45936;&#51060;&#53552;&#54532;&#47112;&#51076; &#54805;&#49457;<a class="anchor-link" href="#&#45348;&#48708;&#44172;&#51060;&#53552;-&#47784;&#45944;&#50640;-&#47582;&#45716;-&#45936;&#51060;&#53552;&#54532;&#47112;&#51076;-&#54805;&#49457;">&#182;</a></h2><hr>
-<ul>
-<li>#1: <code>df_merged</code>데이터<ul>
-<li>df1_transO 데이터와 df2_df4 데이터를 병합한 뒤, 이 데이터를 df3_known 데이터와 병합한 데이터입니다. </li>
-<li>결과적으로 거래정보와 구매한 상품의 정보, 그리고 <code>clnt_type</code>이 추가되었고, 거래가 발생한 세션들만 추출한 데이터입니다.</li>
+<h2 id="&#45348;&#48708;&#44172;&#51060;&#53552;-&#47784;&#45944;&#50640;-&#47582;&#45716;-&#45936;&#51060;&#53552;&#54532;&#47112;&#51076;-&#54805;&#49457;">&#45348;&#48708;&#44172;&#51060;&#53552; &#47784;&#45944;&#50640; &#47582;&#45716; &#45936;&#51060;&#53552;&#54532;&#47112;&#51076; &#54805;&#49457;<a class="anchor-link" href="#&#45348;&#48708;&#44172;&#51060;&#53552;-&#47784;&#45944;&#50640;-&#47582;&#45716;-&#45936;&#51060;&#53552;&#54532;&#47112;&#51076;-&#54805;&#49457;">&#182;</a></h2><ul>
+<li>#1: <code>df_merged</code><ul>
+<li><code>df1_transO</code>, <code>df2_df4</code>, <code>df3_known</code>를 병합한 데이터입니다. </li>
+<li>거래정보, 구매상품정보, 고객 유형(<code>clnt_type</code>)이 추가됐고, 거래가 발생한 세션만 추출한 데이터입니다.</li>
 </ul>
 </li>
-</ul>
-<hr>
-<ul>
-<li>#2: <code>buy_id</code>변수 생성<ul>
-<li>구매발생 단위로 데이터에 접근하기 위해 <code>buy_id</code>변수를 생성합니다. 세션 내 구매 간 행동을 구분해주는 ID입니다.<ul>
-<li>(예) clnt_id, sess_id 가 모두 1인 고객의 hit_seq가 10까지 있는 경우를 생각해보겠습니다. </li>
-<li>만약 hit_seq가 4와 10에 발생했을 경우 두 번의 구매가 발생한 것입니다.</li>
-<li>이 경우 hit_seq 1~4의 buy_id가 1, hit_seq 5~10의 buy_id는 2로 매깁니다.</li>
-<li>또한 buy_id가 0인 경우는 구매 발생과 관련이 없는 것으로 간주하여 학습에서 제외하였습니다.</li>
-</ul>
+<li>#2: <code>buy_id</code>변수
+<pre><code>  - 구매 발생 단위로 데이터에 접근하기 위한 변수입니다.
+  - 상품 판매 경향성을 학습 데이터에 반영하기 위함입니다.
+  - (예) clnt_id, sess_id 가 모두 1인 고객의 hit_seq가 10까지 있는 경우
+      - hit_seq가 4, 10에 구매가 발생했을 경우,
+      - hit_seq 1\~4에는 buy_id가 1, hit_seq 5\~10에 buy_id가 2가 됩니다.</code></pre>
 </li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li>#3 <code>except_7()</code>: 구매환불(7)이 포함된 세션은 제외<ul>
+<li>#3 <code>except_7()</code>: 구매환불(7)이 포함된 세션을 제외하는 함수입니다.<ul>
 <li>거래정보가 발생한 경우는 구매완료(6), 구매환불(7) 두 행동이 있습니다.</li>
-<li>거래 중 구매가 발생한 데이터만을 학습 데이터로 활용하기 위해 구매환불이 발생한 데이터는 제외합니다.</li>
+<li>거래 중 구매가 발생한 데이터만을 학습 데이터로 활용하기 위해 구매환불이 발생한 데이터는 제외합니다.<ul>
+<li>상품 판매 경향성을 학습 데이터에 반영하기 위함입니다.</li>
 </ul>
 </li>
 </ul>
-<hr>
-<ul>
-<li>#4 <code>hit_tm_class</code> 변수 생성<ul>
+</li>
+<li>#4 변수 생성: <code>hit_tm_class</code><ul>
 <li><code>hit_tm</code>을 시간대별  분류를 통해 카테고리화하였습니다.<ul>
 <li>(예) 23:35 -&gt; 23, 23:47 -&gt; 23</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>#4 <code>realtime</code> 변수 생성<ul>
-<li>고객의 실시간 행동을 반영하는 변수입니다.<ul>
+<li>#4 변수 생성: <code>realtime</code><ul>
+<li>고객의 실시간 행동을 담은 변수입니다.<ul>
 <li><code>realtime_hit_pss_tm</code>: 다음 행동이 구매완료(6)라고 할 때, 구매 발생까지 걸린 시간(밀리초)</li>
-<li><code>realtime_hit_seq</code>: 다음 행동이 구매완료(6)라고 할 때,구매 발생까지의 히트시퀀스 수</li>
-<li><code>realtime_num_kwds</code> : 다음 행동이 구매완료(6)라고 할 때,구매 발생까지의 검색어 수</li>
+<li><code>realtime_hit_seq</code>: 다음 행동이 구매완료(6)라고 할 때, 구매 발생까지의 히트시퀀스 수</li>
+<li><code>realtime_num_kwds</code>: 다음 행동이 구매완료(6)라고 할 때, 구매 발생까지의 검색어 수</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>#5 <code>latest</code> 변수 생성<ul>
-<li>과거의 행적을 담은 변수입니다.</li>
-<li><code>latest_kwd</code>: 구매 이전에 검색을 했을 경우 어떤 키워드를 검색했는지에 대한 정보를 담은 변수입니다.<ul>
-<li><code>latest_kwd_1</code>~<code>latest_kwd_6</code>: 가장 최근 검색한 6개의 검색어를 반영합니다.</li>
-</ul>
-</li>
+<li>#5 변수 생성: <code>latest</code><ul>
+<li>과거의 행동을 담은 변수입니다.</li>
+<li><code>latest_kwd_1</code>~<code>latest_kwd_6</code>: 가장 최근 검색한 여섯 개의 키워드를 담은 변수입니다.</li>
 <li><code>latest_pv_hr</code><ul>
 <li><code>pv_hr</code>은 온라인행동데이터의 <code>세션내총페이지뷰수/세션내총시간</code>으로 단위 페이지당 머무른 시간을 나타내는 서핑속도입니다.</li>
 <li><code>latest_pv_hr_1</code> ~ <code>latest_pv_hr_3</code>: 최근 쇼핑의 3개의 페이지 서핑 속도를 반영합니다.</li>
@@ -14646,12 +14628,12 @@ Name: clnt_type, dtype: int64</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="buy_id-&#48320;&#49688;-&#49373;&#49457;"><code>buy_id</code> &#48320;&#49688; &#49373;&#49457;<a class="anchor-link" href="#buy_id-&#48320;&#49688;-&#49373;&#49457;">&#182;</a></h3><ul>
-<li>구매발생 단위로 데이터에 접근하기 위해 <code>buy_id</code>변수를 생성합니다. 세션 내 구매 간 행동을 구분해주는 ID입니다.<ul>
-<li>(예) clnt_id, sess_id 가 모두 1인 고객의 hit_seq가 10까지 있는 경우를 생각해보겠습니다. </li>
-<li>만약 hit_seq가 4와 10에 구매가 발생했을 경우 두 번의 구매가 발생한 것입니다.</li>
-<li>이 경우 hit_seq 1~4의 buy_id가 1, hit_seq 5~10의 buy_id는 2가 됩니다.</li>
-<li>또한 buy_id가 0인 경우는 구매 발생과 관련이 없는 것으로 간주하여 학습에서 제외하였습니다.</li>
+<h3 id="buy_id"><code>buy_id</code><a class="anchor-link" href="#buy_id">&#182;</a></h3><ul>
+<li>구매 발생 단위로 데이터에 접근하기 위한 변수입니다.</li>
+<li>상품 판매 경향성을 학습 데이터에 반영하기 위함입니다.</li>
+<li>(예) clnt_id, sess_id 가 모두 1인 고객의 hit_seq가 10까지 있는 경우<ul>
+<li>hit_seq가 4, 10에 구매가 발생했을 경우,</li>
+<li>hit_seq 1~4에는 buy_id가 1, hit_seq 5~10에 buy_id가 2가 됩니다.</li>
 </ul>
 </li>
 </ul>
@@ -14661,7 +14643,7 @@ Name: clnt_type, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">buy_id</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
@@ -15223,23 +15205,11 @@ Name: clnt_type, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_merged</span> <span class="o">=</span>  <span class="n">df_merged</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_id&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">realtime_hit_pss_tm</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 <div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_merged</span><span class="p">[[</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_id&#39;</span><span class="p">,</span> <span class="s1">&#39;buy_id&#39;</span><span class="p">,</span> <span class="s1">&#39;realtime_hit_pss_tm&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_merged</span> <span class="o">=</span>  <span class="n">df_merged</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_id&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">realtime_hit_pss_tm</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">df_merged</span><span class="p">[[</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_id&#39;</span><span class="p">,</span> <span class="s1">&#39;buy_id&#39;</span><span class="p">,</span> <span class="s1">&#39;realtime_hit_pss_tm&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -15363,23 +15333,11 @@ Name: clnt_type, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_merged</span> <span class="o">=</span> <span class="n">df_merged</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_id&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">realtime_hit_seq</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 <div class="prompt input_prompt">In&nbsp;[41]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_merged</span><span class="p">[[</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_id&#39;</span><span class="p">,</span> <span class="s1">&#39;buy_id&#39;</span><span class="p">,</span> <span class="s1">&#39;realtime_hit_seq&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_merged</span> <span class="o">=</span> <span class="n">df_merged</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_id&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">realtime_hit_seq</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">df_merged</span><span class="p">[[</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_id&#39;</span><span class="p">,</span> <span class="s1">&#39;buy_id&#39;</span><span class="p">,</span> <span class="s1">&#39;realtime_hit_seq&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -15471,7 +15429,7 @@ Name: clnt_type, dtype: int64</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="realtime_num_kwds-:-&#44396;&#47588;&#44032;-&#48156;&#49373;&#54616;&#44592;&#44620;&#51648;&#51032;-&#44160;&#49353;&#54943;&#49688;(=&#44160;&#49353;-action&#51032;-&#48156;&#49373;-&#54943;&#49688;)"><code>realtime_num_kwds</code> : &#44396;&#47588;&#44032; &#48156;&#49373;&#54616;&#44592;&#44620;&#51648;&#51032; &#44160;&#49353;&#54943;&#49688;(=&#44160;&#49353; action&#51032; &#48156;&#49373; &#54943;&#49688;)<a class="anchor-link" href="#realtime_num_kwds-:-&#44396;&#47588;&#44032;-&#48156;&#49373;&#54616;&#44592;&#44620;&#51648;&#51032;-&#44160;&#49353;&#54943;&#49688;(=&#44160;&#49353;-action&#51032;-&#48156;&#49373;-&#54943;&#49688;)">&#182;</a></h4>
+<h4 id="realtime_num_kwds-:-&#44396;&#47588;&#44032;-&#48156;&#49373;&#54616;&#44592;&#44620;&#51648;&#51032;-&#44160;&#49353;&#54943;&#49688;"><code>realtime_num_kwds</code> : &#44396;&#47588;&#44032; &#48156;&#49373;&#54616;&#44592;&#44620;&#51648;&#51032; &#44160;&#49353;&#54943;&#49688;<a class="anchor-link" href="#realtime_num_kwds-:-&#44396;&#47588;&#44032;-&#48156;&#49373;&#54616;&#44592;&#44620;&#51648;&#51032;-&#44160;&#49353;&#54943;&#49688;">&#182;</a></h4>
 </div>
 </div>
 </div>
@@ -15480,7 +15438,7 @@ Name: clnt_type, dtype: int64</pre>
 <div class="prompt input_prompt">In&nbsp;[42]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_merged</span><span class="p">[</span><span class="s1">&#39;realtime_num_kwds&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># 초기값을 넣어줌</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_merged</span><span class="p">[</span><span class="s1">&#39;realtime_num_kwds&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># 초기값을 넣어줍니다.</span>
 </pre></div>
 
     </div>
@@ -15508,23 +15466,11 @@ Name: clnt_type, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_merged</span> <span class="o">=</span> <span class="n">df_merged</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_id&#39;</span><span class="p">,</span> <span class="s1">&#39;buy_id&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">realtime_num_kwds</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 <div class="prompt input_prompt">In&nbsp;[45]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_merged</span><span class="p">[[</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_id&#39;</span><span class="p">,</span> <span class="s1">&#39;buy_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sech_kwd&#39;</span><span class="p">,</span> <span class="s1">&#39;realtime_num_kwds&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_merged</span> <span class="o">=</span> <span class="n">df_merged</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_id&#39;</span><span class="p">,</span> <span class="s1">&#39;buy_id&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">realtime_num_kwds</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">df_merged</span><span class="p">[[</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_id&#39;</span><span class="p">,</span> <span class="s1">&#39;buy_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sech_kwd&#39;</span><span class="p">,</span> <span class="s1">&#39;realtime_num_kwds&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -15663,7 +15609,7 @@ Name: clnt_type, dtype: int64</pre>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li><code>realtime_num_kwds</code>의 분포탐색: 사용자들은 보통 몇번의 검색을 하느냐<ul>
+<li><code>realtime_num_kwds</code>의 분포탐색: 사용자들은 보통 몇번의 검색을 하는지 살펴봅니다.<ul>
 <li>최소: 0회</li>
 <li>평균: 4.5회</li>
 <li>중앙값: 2회</li>
@@ -15825,13 +15771,9 @@ Name: realtime_num_kwds, dtype: float64</pre>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h5 id="latest_kwd"><code>latest_kwd</code><a class="anchor-link" href="#latest_kwd">&#182;</a></h5><ul>
-<li><code>latest_kwd</code>: 구매 이전에 검색을 했을 경우 어떤 키워드를 검색했는지에 대한 정보를 담은 변수입니다.<ul>
-<li><code>latest_kwd_1</code> : 구매로부터 가장 최근의 검색키워드입니다.</li>
-<li>~ <code>latest_kwd_6</code>: 구매로부터 6번째로 오래된 검색키워드입니다.</li>
-</ul>
-</li>
-<li>만약 검색어가 발생하지 않았다면 -1로 처리하여 별도의 카테고리에 속하도록 했습니다.</li>
-<li>(예) 'Beverage'를 구매한 사용자가 구매발생 이전에 3번의 검색만을 한 경우 <code>latest_kwd_4</code> ~ <code>latest_kwd_6</code>은 -1이 됩니다. </li>
+<li><code>latest_kwd_1</code>~<code>latest_kwd_6</code>: 가장 최근 검색한 여섯 개의 키워드를 담은 변수입니다.</li>
+<li>만약 검색어가 발생하지 않았다면 해당 컬럼의 값은 -1로 처리합니다.</li>
+<li>(예) 'Beverage'를 구매한 사용자가 구매발생 이전에 3번의 검색만을 한 경우 <code>latest_kwd_4</code> ~ <code>latest_kwd_6</code>은 -1이 됩니다.</li>
 </ul>
 
 </div>
@@ -15877,23 +15819,11 @@ Name: realtime_num_kwds, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[50]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_merged</span> <span class="o">=</span> <span class="n">df_merged</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_id&#39;</span><span class="p">,</span> <span class="s1">&#39;buy_id&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">latest_kwds</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 <div class="prompt input_prompt">In&nbsp;[51]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_merged</span><span class="p">[[</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_id&#39;</span><span class="p">,</span> <span class="s1">&#39;buy_id&#39;</span><span class="p">,</span> <span class="s1">&#39;hit_seq&#39;</span><span class="p">,</span> <span class="s1">&#39;sech_kwd&#39;</span><span class="p">,</span> <span class="s1">&#39;realtime_num_kwds&#39;</span><span class="p">,</span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_merged</span> <span class="o">=</span> <span class="n">df_merged</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_id&#39;</span><span class="p">,</span> <span class="s1">&#39;buy_id&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">latest_kwds</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">df_merged</span><span class="p">[[</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_id&#39;</span><span class="p">,</span> <span class="s1">&#39;buy_id&#39;</span><span class="p">,</span> <span class="s1">&#39;hit_seq&#39;</span><span class="p">,</span> <span class="s1">&#39;sech_kwd&#39;</span><span class="p">,</span> <span class="s1">&#39;realtime_num_kwds&#39;</span><span class="p">,</span> 
            <span class="s1">&#39;latest_kwd_1&#39;</span><span class="p">,</span> <span class="s1">&#39;latest_kwd_2&#39;</span><span class="p">,</span> <span class="s1">&#39;latest_kwd_3&#39;</span><span class="p">,</span> <span class="s1">&#39;latest_kwd_4&#39;</span><span class="p">,</span> <span class="s1">&#39;latest_kwd_5&#39;</span><span class="p">,</span> <span class="s1">&#39;latest_kwd_6&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
@@ -16209,7 +16139,7 @@ Name: realtime_num_kwds, dtype: float64</pre>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>사용자의 세션수의 분포에 대한 탐색 결과 상위 75% 이상이 3개 이상의 세션 수를 지니고 있습니다. 이에 따라 3번째 이전의 세션까지 pv_hr을 변수로 반영하였습니다.(위는 1만개 고객 데이터만을 반영하였을 경우에 대한 그래프입니다)<ul>
+<li>사용자의 세션수의 분포에 대한 탐색 결과 상위 75% 이상이 3개 이상의 세션 수를 지니고 있습니다. 이에 따라 3번째 이전의 세션까지 pv_hr을 변수로 반영하였습니다.(위는 1만개 고객 데이터만을 반영하였을 경우에 대한 그래프입니다. 코드 재현 과정에서 편의상 적은 데이터만을 가지고 실행했습니다.)<ul>
 <li><code>latest_pv_hr_1</code>: 가장 최근 구매가 발생한 과거의 세션의 pv_hr입니다.</li>
 <li>~ <code>latest_pv_hr_3</code>: 세번째로 오래된 구매가 발생한 세션의 pv_hr입니다.</li>
 </ul>
@@ -18007,10 +17937,18 @@ Name: realtime_num_kwds, dtype: float64</pre>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="df_navigator">df_navigator<a class="anchor-link" href="#df_navigator">&#182;</a></h3><ul>
-<li>네비게이터 모델의 예측 첫 단계는 구매 상품의 대분류(<code>clac_nm1</code>)예측입니다.</li>
-<li>대분류를 예측하고 이를 다시 특징변수로 받아 중분류를 예측, 그리고 소분류를 예측합니다.</li>
-<li><code>df_merge</code>데이터의 실제 구매 대분류 상품(<code>clac_nm1</code>)을 모델의 예측타겟으로 사용하였습니다.</li>
-<li>'상품을 구매하기 전까지 사용자는 그 상품을 구매하기 위해 행동한 것이다'라는 전제를 따라 학습이 진행됩니다.<ul>
+<li>네비게이터 모델은 두 개의 모델로 구성됩니다. <ul>
+<li>첫 번째 모델: 구매 상품의 대분류(<code>clac_nm1</code>) 예측<ul>
+<li><code>df_merge</code>데이터의 실제 구매 대분류 상품(<code>clac_nm1</code>)을 모델의 타겟으로 사용합니다.</li>
+</ul>
+</li>
+<li>두 번째 모델: 구매 상품의 소분류(<code>clac_nm3</code>) 예측 결과, 확률이 가장 높은 6개의 상품을 추천<ul>
+<li>첫 번째 모델의 예측 대분류 결괏값을 변수로 반영합니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>전제: '상품을 구매하기까지 사용자는 그 상품을 구매하기 위해 행동한다'<ul>
 <li>가령 사용자가 'Beverages'를 구매하기에 앞선 행동들은 모두 'Beverages'를 위한 행동인 것입니다.</li>
 <li>이 가정에 따라 한 <code>buy_id</code>에서 발생한 구매상품이 해당 <code>buy_id</code>의 모든 시퀀스의 타겟값이 됩니다.</li>
 </ul>
@@ -18059,24 +17997,12 @@ Name: realtime_num_kwds, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[82]:</div>
+<div class="prompt input_prompt">In&nbsp;[83]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_navigator_raw</span> <span class="o">=</span> <span class="n">df_navigator_raw</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_id&#39;</span><span class="p">],</span> <span class="n">as_index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="n">target_merge</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 <span class="n">df_navigator_raw</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[83]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_navigator_raw</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df_navigator_raw</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -18434,7 +18360,7 @@ Name: realtime_num_kwds, dtype: float64</pre>
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li><code>trans_id</code>가 결측값이 아님에도 불구하고 구매상품정보가 없는 경우도 있습니다.</li>
-<li>구매상품정보가 있는 데이터만 학습데이터로 사용하겠습니다.</li>
+<li>구매상품정보가 있는 데이터만 학습데이터로 사용합니다.</li>
 </ul>
 
 </div>
@@ -18442,24 +18368,12 @@ Name: realtime_num_kwds, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[84]:</div>
+<div class="prompt input_prompt">In&nbsp;[85]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_navigator_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./navigator/# df_navigator_raw.csv&#39;</span><span class="p">)</span>
 <span class="n">df_navigator</span> <span class="o">=</span> <span class="n">df_navigator_raw</span><span class="p">[</span><span class="o">~</span><span class="n">df_navigator_raw</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[85]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_navigator</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df_navigator</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -18869,7 +18783,7 @@ Name: realtime_num_kwds, dtype: float64</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#47784;&#45944;&#54617;&#49845;">&#47784;&#45944;&#54617;&#49845;<a class="anchor-link" href="#&#47784;&#45944;&#54617;&#49845;">&#182;</a></h2><ul>
+<h2 id="&#52395;-&#48264;&#51704;-&#47784;&#45944;&#54617;&#49845;---&#44396;&#47588;-&#49345;&#54408;-&#45824;&#48516;&#47448;-&#50696;&#52769;">&#52395; &#48264;&#51704; &#47784;&#45944;&#54617;&#49845; - &#44396;&#47588; &#49345;&#54408; &#45824;&#48516;&#47448; &#50696;&#52769;<a class="anchor-link" href="#&#52395;-&#48264;&#51704;-&#47784;&#45944;&#54617;&#49845;---&#44396;&#47588;-&#49345;&#54408;-&#45824;&#48516;&#47448;-&#50696;&#52769;">&#182;</a></h2><ul>
 <li>예측 모델로 마이크로소프트사가 제작한 예측모델인 lightGBM를 사용하겠습니다.</li>
 </ul>
 
@@ -19246,527 +19160,6 @@ Name: target, dtype: int32</pre>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>모델 저장</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">lgb_model</span><span class="p">,</span> <span class="s1">&#39;./navigator/lgb_model_final.pkl&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lgb_model</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;./navigator/lgb_model_final.pkl&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[92]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_navigator</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[92]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>clnt_id</th>
-      <th>clnt_type</th>
-      <th>sess_id</th>
-      <th>buy_id</th>
-      <th>hit_seq</th>
-      <th>action_type</th>
-      <th>biz_unit</th>
-      <th>trans_id</th>
-      <th>sess_dt</th>
-      <th>hit_pss_tm</th>
-      <th>trfc_src</th>
-      <th>dvc_ctg_nm</th>
-      <th>hit_tm_class</th>
-      <th>realtime_hit_pss_tm</th>
-      <th>realtime_hit_seq</th>
-      <th>realtime_num_kwds</th>
-      <th>latest_kwd_1</th>
-      <th>latest_kwd_2</th>
-      <th>latest_kwd_3</th>
-      <th>latest_kwd_4</th>
-      <th>latest_kwd_5</th>
-      <th>latest_kwd_6</th>
-      <th>latest_pv_hr_1</th>
-      <th>latest_pv_hr_2</th>
-      <th>latest_pv_hr_3</th>
-      <th>clac_nm1</th>
-      <th>clac_nm2</th>
-      <th>clac_nm3</th>
-      <th>scorch</th>
-      <th>pm2.5</th>
-      <th>pm10</th>
-      <th>weekday</th>
-      <th>target</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>2.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>2</td>
-      <td>NaN</td>
-      <td>20190728</td>
-      <td>39532.0</td>
-      <td>0</td>
-      <td>3</td>
-      <td>23</td>
-      <td>39532.0</td>
-      <td>1.0</td>
-      <td>0</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>25</td>
-      <td>9</td>
-      <td>14</td>
-      <td>6</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>2.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1</td>
-      <td>2.0</td>
-      <td>1.0</td>
-      <td>2</td>
-      <td>NaN</td>
-      <td>20190728</td>
-      <td>47232.0</td>
-      <td>0</td>
-      <td>3</td>
-      <td>23</td>
-      <td>47232.0</td>
-      <td>2.0</td>
-      <td>1</td>
-      <td>31143</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>25</td>
-      <td>9</td>
-      <td>14</td>
-      <td>6</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>2.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1</td>
-      <td>3.0</td>
-      <td>2.0</td>
-      <td>2</td>
-      <td>NaN</td>
-      <td>20190728</td>
-      <td>48087.0</td>
-      <td>0</td>
-      <td>3</td>
-      <td>23</td>
-      <td>48087.0</td>
-      <td>3.0</td>
-      <td>1</td>
-      <td>31143</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>25</td>
-      <td>9</td>
-      <td>14</td>
-      <td>6</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>2.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1</td>
-      <td>4.0</td>
-      <td>0.0</td>
-      <td>2</td>
-      <td>NaN</td>
-      <td>20190728</td>
-      <td>62794.0</td>
-      <td>0</td>
-      <td>3</td>
-      <td>23</td>
-      <td>62794.0</td>
-      <td>4.0</td>
-      <td>1</td>
-      <td>31143</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>25</td>
-      <td>9</td>
-      <td>14</td>
-      <td>6</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>2.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1</td>
-      <td>5.0</td>
-      <td>0.0</td>
-      <td>2</td>
-      <td>NaN</td>
-      <td>20190728</td>
-      <td>104074.0</td>
-      <td>0</td>
-      <td>3</td>
-      <td>23</td>
-      <td>104074.0</td>
-      <td>5.0</td>
-      <td>2</td>
-      <td>31143</td>
-      <td>31143</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>25</td>
-      <td>9</td>
-      <td>14</td>
-      <td>6</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <td>28726</td>
-      <td>475.0</td>
-      <td>3.0</td>
-      <td>44.0</td>
-      <td>1</td>
-      <td>44.0</td>
-      <td>0.0</td>
-      <td>1</td>
-      <td>NaN</td>
-      <td>20190721</td>
-      <td>2881336.0</td>
-      <td>6</td>
-      <td>1</td>
-      <td>21</td>
-      <td>2881336.0</td>
-      <td>44.0</td>
-      <td>0</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>0.018696</td>
-      <td>0.015955</td>
-      <td>0.037064</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>25</td>
-      <td>11</td>
-      <td>17</td>
-      <td>6</td>
-      <td>18</td>
-    </tr>
-    <tr>
-      <td>28727</td>
-      <td>475.0</td>
-      <td>3.0</td>
-      <td>44.0</td>
-      <td>1</td>
-      <td>45.0</td>
-      <td>1.0</td>
-      <td>1</td>
-      <td>NaN</td>
-      <td>20190721</td>
-      <td>2886518.0</td>
-      <td>6</td>
-      <td>1</td>
-      <td>21</td>
-      <td>2886518.0</td>
-      <td>45.0</td>
-      <td>1</td>
-      <td>51604</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>0.018696</td>
-      <td>0.015955</td>
-      <td>0.037064</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>25</td>
-      <td>11</td>
-      <td>17</td>
-      <td>6</td>
-      <td>18</td>
-    </tr>
-    <tr>
-      <td>28728</td>
-      <td>475.0</td>
-      <td>3.0</td>
-      <td>44.0</td>
-      <td>1</td>
-      <td>46.0</td>
-      <td>2.0</td>
-      <td>1</td>
-      <td>NaN</td>
-      <td>20190721</td>
-      <td>2891581.0</td>
-      <td>6</td>
-      <td>1</td>
-      <td>21</td>
-      <td>2891581.0</td>
-      <td>46.0</td>
-      <td>1</td>
-      <td>51604</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>0.018696</td>
-      <td>0.015955</td>
-      <td>0.037064</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>25</td>
-      <td>11</td>
-      <td>17</td>
-      <td>6</td>
-      <td>18</td>
-    </tr>
-    <tr>
-      <td>28729</td>
-      <td>475.0</td>
-      <td>3.0</td>
-      <td>44.0</td>
-      <td>1</td>
-      <td>47.0</td>
-      <td>5.0</td>
-      <td>1</td>
-      <td>NaN</td>
-      <td>20190721</td>
-      <td>2905960.0</td>
-      <td>6</td>
-      <td>1</td>
-      <td>21</td>
-      <td>2905960.0</td>
-      <td>47.0</td>
-      <td>1</td>
-      <td>51604</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>0.018696</td>
-      <td>0.015955</td>
-      <td>0.037064</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>25</td>
-      <td>11</td>
-      <td>17</td>
-      <td>6</td>
-      <td>18</td>
-    </tr>
-    <tr>
-      <td>28730</td>
-      <td>475.0</td>
-      <td>3.0</td>
-      <td>44.0</td>
-      <td>1</td>
-      <td>48.0</td>
-      <td>6.0</td>
-      <td>1</td>
-      <td>56863.0</td>
-      <td>20190721</td>
-      <td>2920325.0</td>
-      <td>6</td>
-      <td>1</td>
-      <td>22</td>
-      <td>2920325.0</td>
-      <td>48.0</td>
-      <td>1</td>
-      <td>51604</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>0.018696</td>
-      <td>0.015955</td>
-      <td>0.037064</td>
-      <td>Fashion Accessories</td>
-      <td>Women's Shoes</td>
-      <td>Women's Pumps</td>
-      <td>25</td>
-      <td>11</td>
-      <td>17</td>
-      <td>6</td>
-      <td>18</td>
-    </tr>
-  </tbody>
-</table>
-<p>28731 rows × 33 columns</p>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
 <li>변수별 중요도는 다음과 같습니다.</li>
 </ul>
 
@@ -19824,12 +19217,55 @@ Name: target, dtype: int32</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>모델 저장</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">lgb_model</span><span class="p">,</span> <span class="s1">&#39;./navigator/lgb_model_final.pkl&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>모델 불러오기</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lgb_model</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;./navigator/lgb_model_final.pkl&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#51221;&#54869;&#46020;-&#52769;&#51221;">&#51221;&#54869;&#46020; &#52769;&#51221;<a class="anchor-link" href="#&#51221;&#54869;&#46020;-&#52769;&#51221;">&#182;</a></h3><ul>
 <li>세션 내 구매 이전의 행동에 대한 구매상품결과가 실제로 구매했던 품목에 포함되어 있는 경우 예측에 성공한 것으로 간주합니다.</li>
-<li>그 결과 약 60%의 정확도를 보였습니다. <ul>
-<li>이는 곧 트래커모델로부터 얻은 고객유형과 네비게이터모델의 실시간 행동패턴과 과거 행동 패턴, 날짜에 따른 부가정보가 구매상품 예측에 핵심 변수로 작용하고 있음을 의미합니다.</li>
-</ul>
-</li>
+<li>약 60%의 정확도를 보입니다.</li>
 </ul>
 
 </div>
@@ -19890,7 +19326,7 @@ Name: target, dtype: int32</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[95]:</div>
+<div class="prompt input_prompt">In&nbsp;[98]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">pred</span> <span class="o">=</span> <span class="n">lgb_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_x</span><span class="p">)</span>
@@ -19899,45 +19335,10 @@ Name: target, dtype: int32</pre>
 <span class="n">id_for_test_x</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_pred</span>
 <span class="n">id_for_test_x</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_id&#39;</span><span class="p">,</span> <span class="s1">&#39;buy_id&#39;</span><span class="p">],</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 <span class="n">id_for_test_x</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-</pre></div>
 
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[96]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">id_for_test_x</span><span class="p">[</span><span class="s1">&#39;is_correct&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[97]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">output</span> <span class="o">=</span> <span class="n">id_for_test_x</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_id&#39;</span><span class="p">,</span> <span class="s1">&#39;buy_id&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">is_correct</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[98]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># is_correct가 0인 경우 오답, is_correct가 1인 경우 정답</span>
+<span class="c1"># is_correct가 0인 경우 오답, is_correct가 1인 경우 정답</span>
+<span class="n">id_for_test_x</span><span class="p">[</span><span class="s1">&#39;is_correct&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">id_for_test_x</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_id&#39;</span><span class="p">,</span> <span class="s1">&#39;buy_id&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">is_correct</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 <span class="n">output</span><span class="p">[[</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_id&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="s1">&#39;is_correct&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
@@ -20029,7 +19430,7 @@ Name: target, dtype: int32</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[99]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;정확도: {output[&#39;is_correct&#39;].mean()*100}%&quot;</span><span class="p">)</span>
@@ -20049,7 +19450,7 @@ Name: target, dtype: int32</pre>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>정확도: 52.86542923433875%
+<pre>정확도: 59.86542923433875%
 </pre>
 </div>
 </div>
@@ -20061,7 +19462,9 @@ Name: target, dtype: int32</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>(*위 결과는 1만개 데이터로 학습, 예측하였을 경우 도출된 정확도입니다.)</p>
+<ul>
+<li>데이터 저장</li>
+</ul>
 
 </div>
 </div>
@@ -20082,8 +19485,9 @@ Name: target, dtype: int32</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#49548;&#48516;&#47448;-&#49345;&#54408;-&#50696;&#52769;&#51012;-&#53685;&#54620;-&#49464;&#48512;-&#54637;&#47785;-&#52628;&#52380;:-&#45348;&#48708;&#44172;&#51060;&#53552;-&#47784;&#45944;&#51032;-&#52572;&#51333;-&#47785;&#54364;!">&#49548;&#48516;&#47448; &#49345;&#54408; &#50696;&#52769;&#51012; &#53685;&#54620; &#49464;&#48512; &#54637;&#47785; &#52628;&#52380;: &#45348;&#48708;&#44172;&#51060;&#53552; &#47784;&#45944;&#51032; &#52572;&#51333; &#47785;&#54364;!<a class="anchor-link" href="#&#49548;&#48516;&#47448;-&#49345;&#54408;-&#50696;&#52769;&#51012;-&#53685;&#54620;-&#49464;&#48512;-&#54637;&#47785;-&#52628;&#52380;:-&#45348;&#48708;&#44172;&#51060;&#53552;-&#47784;&#45944;&#51032;-&#52572;&#51333;-&#47785;&#54364;!">&#182;</a></h3><ul>
-<li>최종의 소분류 상품 예측을 위해 이제는 기존의 대분류(<code>clac_nm1</code>) target 변수를 특징 변수로서 활용하며, 타겟 변수는 소분류 구매상품정보가 됩니다.</li>
+<h2 id="&#46160;-&#48264;&#51704;-&#47784;&#45944;---&#49345;&#54408;-&#49548;&#48516;&#47448;-&#50696;&#52769;">&#46160; &#48264;&#51704; &#47784;&#45944; - &#49345;&#54408; &#49548;&#48516;&#47448; &#50696;&#52769;<a class="anchor-link" href="#&#46160;-&#48264;&#51704;-&#47784;&#45944;---&#49345;&#54408;-&#49548;&#48516;&#47448;-&#50696;&#52769;">&#182;</a></h2><ul>
+<li>예측한 상품 대분류(<code>clac_nm1</code>)를 변수로 추가하고, 상품 소분류를 예측합니다.</li>
+<li>소프트맥스 값을 예측 결괏값으로 출력하고, 확률이 가장 높은 6개의 상품을 추천합니다.</li>
 </ul>
 
 </div>
@@ -20527,7 +19931,10 @@ Name: target, dtype: int32</pre>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>학습데이터 생성</li>
+<li>학습데이터 생성<ul>
+<li>첫 번째 모델에서 예측한 상품 대분류를 변수로 사용합니다.</li>
+</ul>
+</li>
 </ul>
 
 </div>
@@ -20768,7 +20175,7 @@ Name: target, dtype: int32</pre>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>아래와 같이 소분류는 총 1662가지가 있습니다.</li>
+<li>아래와 같이 상품의 소분류는 총 1662가지입니다.</li>
 </ul>
 
 </div>
@@ -20908,13 +20315,22 @@ Name: target, dtype: int32</pre>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>모델 불러오기</li>
+</ul>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[109]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 재현시 해당 모델을 불러온다.</span>
-<span class="n">lgb_model</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;./navigator/lgb_model_clac3_final.pkl&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lgb_model</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;./navigator/lgb_model_clac3_final.pkl&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -20926,7 +20342,7 @@ Name: target, dtype: int32</pre>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>전체 train데이터에 대한 target을 예측합니다.</li>
+<li>변수 중요도는 다음과 같습니다.</li>
 </ul>
 
 </div>
@@ -20986,6 +20402,7 @@ Name: target, dtype: int32</pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_y</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;검증타겟.csv&#39;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">lgb_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_x</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -20993,51 +20410,15 @@ Name: target, dtype: int32</pre>
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[111]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pred</span> <span class="o">=</span> <span class="n">lgb_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_x</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[112]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">test_y</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[112]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>5512</pre>
-</div>
-
-</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#51221;&#54869;&#46020;-&#52769;&#51221;">&#51221;&#54869;&#46020; &#52769;&#51221;<a class="anchor-link" href="#&#51221;&#54869;&#46020;-&#52769;&#51221;">&#182;</a></h3><ul>
+<li>첫 번째 모델과 같은 방식으로 정확도를 측정합니다.</li>
+</ul>
 
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -21094,7 +20475,7 @@ Name: target, dtype: int32</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>소분류 예측의 경우 위와 같이 약 50%의 정확도를 보입니다.</p>
+<p>약 50%의 정확도를 보입니다.</p>
 
 </div>
 </div>
@@ -21102,7 +20483,7 @@ Name: target, dtype: int32</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#49885;&#48324;&#54868;&#46108;-&#48708;&#54924;&#50896;&#50640;-&#45824;&#54620;-&#49345;&#54408;-&#52628;&#52380;">&#49885;&#48324;&#54868;&#46108; &#48708;&#54924;&#50896;&#50640; &#45824;&#54620; &#49345;&#54408; &#52628;&#52380;<a class="anchor-link" href="#&#49885;&#48324;&#54868;&#46108;-&#48708;&#54924;&#50896;&#50640;-&#45824;&#54620;-&#49345;&#54408;-&#52628;&#52380;">&#182;</a></h3>
+<h2 id="&#48708;&#54924;&#50896;-&#44256;&#44061;-&#47582;&#52644;-&#49345;&#54408;-&#52628;&#52380;">&#48708;&#54924;&#50896; &#44256;&#44061; &#47582;&#52644; &#49345;&#54408; &#52628;&#52380;<a class="anchor-link" href="#&#48708;&#54924;&#50896;-&#44256;&#44061;-&#47582;&#52644;-&#49345;&#54408;-&#52628;&#52380;">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -21110,7 +20491,7 @@ Name: target, dtype: int32</pre>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>식별화된 비회원 데이터를 불러옵니다.</li>
+<li>트래커 모델에 의해 식별화한 비회원 데이터를 불러옵니다.</li>
 </ul>
 
 </div>
@@ -21118,26 +20499,12 @@ Name: target, dtype: int32</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 비회원 학습데이터</span>
 <span class="n">train_unknown</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./navigator/# 식별화된 비회원 데이터_final_for_predict.csv&#39;</span><span class="p">)</span>
-
-<span class="c1"># 위 비회원 학습데이터에 대한 clnt_id</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_unknown</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">train_unknown</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -21352,50 +20719,11 @@ Name: target, dtype: int32</pre>
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_unknown</span><span class="o">.</span><span class="n">columns</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[8]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>Index([&#39;clnt_type&#39;, &#39;sess_id&#39;, &#39;hit_seq&#39;, &#39;action_type&#39;, &#39;biz_unit&#39;,
-       &#39;hit_pss_tm&#39;, &#39;trfc_src&#39;, &#39;dvc_ctg_nm&#39;, &#39;hit_tm_class&#39;,
-       &#39;realtime_num_kwds&#39;, &#39;realtime_hit_pss_tm&#39;, &#39;latest_kwd_1&#39;,
-       &#39;latest_kwd_2&#39;, &#39;latest_kwd_3&#39;, &#39;latest_kwd_4&#39;, &#39;latest_kwd_5&#39;,
-       &#39;latest_kwd_6&#39;, &#39;latest_pv_hr_1&#39;, &#39;latest_pv_hr_2&#39;, &#39;latest_pv_hr_3&#39;,
-       &#39;realtime_hit_seq&#39;, &#39;scorch&#39;, &#39;pm2.5&#39;, &#39;pm10&#39;, &#39;weekday&#39;],
-      dtype=&#39;object&#39;)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="&#45824;&#48516;&#47448;-&#44396;&#47588;-&#49345;&#54408;-&#49345;&#54408;-&#50696;&#52769;">&#45824;&#48516;&#47448; &#44396;&#47588; &#49345;&#54408; &#49345;&#54408; &#50696;&#52769;<a class="anchor-link" href="#&#45824;&#48516;&#47448;-&#44396;&#47588;-&#49345;&#54408;-&#49345;&#54408;-&#50696;&#52769;">&#182;</a></h4><ul>
-<li>대분류 상품 예측 모델을 불러오고 예측합니다.</li>
+<h3 id="&#50696;&#52769;:-&#52395;-&#48264;&#51704;-&#47784;&#45944;-&#49324;&#50857;">&#50696;&#52769;: &#52395; &#48264;&#51704; &#47784;&#45944; &#49324;&#50857;<a class="anchor-link" href="#&#50696;&#52769;:-&#52395;-&#48264;&#51704;-&#47784;&#45944;-&#49324;&#50857;">&#182;</a></h3><ul>
+<li>구매할 상품의 대분류를 예측합니다.</li>
 </ul>
 
 </div>
@@ -21437,6 +20765,16 @@ Name: target, dtype: int32</pre>
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>학습시켜둔 모델을 불러옵니다.</li>
+</ul>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -21527,6 +20865,16 @@ Name: target, dtype: int32</pre>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>데이터 저장</li>
+</ul>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
@@ -21543,7 +20891,7 @@ Name: target, dtype: int32</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="&#49548;&#48516;&#47448;-&#49345;&#54408;-&#50696;&#52769;-&#48143;-&#52628;&#52380;">&#49548;&#48516;&#47448; &#49345;&#54408; &#50696;&#52769; &#48143; &#52628;&#52380;<a class="anchor-link" href="#&#49548;&#48516;&#47448;-&#49345;&#54408;-&#50696;&#52769;-&#48143;-&#52628;&#52380;">&#182;</a></h4>
+<h3 id="&#50696;&#52769;-&#48143;-&#52628;&#52380;:-&#46160;-&#48264;&#51704;-&#47784;&#45944;-&#49324;&#50857;">&#50696;&#52769; &#48143; &#52628;&#52380;: &#46160; &#48264;&#51704; &#47784;&#45944; &#49324;&#50857;<a class="anchor-link" href="#&#50696;&#52769;-&#48143;-&#52628;&#52380;:-&#46160;-&#48264;&#51704;-&#47784;&#45944;-&#49324;&#50857;">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -21551,7 +20899,7 @@ Name: target, dtype: int32</pre>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>위의 예측한 타겟을 기존 학습데이터(train_unknown)의 변수로 추가합니다</li>
+<li>위에서 예측한 구매 상품 대분류를 기존 데이터의 특징변수로 추가합니다.</li>
 </ul>
 
 </div>
@@ -21813,6 +21161,16 @@ Name: target, dtype: int32</pre>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>학습해둔 두 번째 모델을 불러옵니다.</li>
+</ul>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[37]:</div>
@@ -21860,6 +21218,7 @@ Name: target, dtype: int32</pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">recommend_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">recommend_list</span><span class="p">),</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;추천상품1&#39;</span> <span class="p">,</span><span class="s1">&#39;추천상품2&#39;</span><span class="p">,</span> <span class="s1">&#39;추천상품3&#39;</span><span class="p">,</span> <span class="s1">&#39;추천상품4&#39;</span><span class="p">,</span> <span class="s1">&#39;추천상품5&#39;</span><span class="p">,</span> <span class="s1">&#39;추천상품6&#39;</span><span class="p">])</span>
+<span class="n">recommend_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;./navigator/# 잠재고객 추천상품 데이터프레임_encoded.csv&#39;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
 <span class="n">recommend_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
@@ -21957,19 +21316,6 @@ Name: target, dtype: int32</pre>
 
 </div>
 
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[49]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">recommend_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;./navigator/# 잠재고객 추천상품 데이터프레임_encoded.csv&#39;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
-</pre></div>
-
-    </div>
 </div>
 </div>
 
@@ -22155,41 +21501,6 @@ Name: target, dtype: int32</pre>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[61]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">ids</span><span class="p">,</span> <span class="n">train_unknown_clac3</span><span class="p">[[</span><span class="s1">&#39;clnt_type&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_id&#39;</span><span class="p">,</span> <span class="s1">&#39;hit_seq&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">]],</span> <span class="n">recommend_df</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[61]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>Index([&#39;clnt_id&#39;, &#39;sess_id&#39;, &#39;clnt_type&#39;, &#39;sess_id&#39;, &#39;hit_seq&#39;, &#39;target&#39;,
-       &#39;추천상품1&#39;, &#39;추천상품2&#39;, &#39;추천상품3&#39;, &#39;추천상품4&#39;, &#39;추천상품5&#39;, &#39;추천상품6&#39;],
-      dtype=&#39;object&#39;)</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 

@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>05_고지형_네비게이터_모델_학습데이터_구성</title>
+<title>05_고지형_네비게이터_모델_비회원고객_학습데이터_구성</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13083,10 +13083,9 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#49885;&#48324;&#54868;&#46108;-&#48708;&#54924;&#50896;-&#44256;&#44061;-&#54617;&#49845;-&#45936;&#51060;&#53552;-&#44396;&#49457;">&#49885;&#48324;&#54868;&#46108; &#48708;&#54924;&#50896; &#44256;&#44061; &#54617;&#49845; &#45936;&#51060;&#53552; &#44396;&#49457;<a class="anchor-link" href="#&#49885;&#48324;&#54868;&#46108;-&#48708;&#54924;&#50896;-&#44256;&#44061;-&#54617;&#49845;-&#45936;&#51060;&#53552;-&#44396;&#49457;">&#182;</a></h1><ul>
-<li>비회원 고객들이 트래커 모델에 의해 타입이 예측되었습니다.</li>
-<li>이제 이 데이터를 네비게이터모델을 통해 상품을 추천할 것입니다.</li>
-<li>아래는 네비게이터 모델에 필요한 맞게 변수들을 생성하는 과정입니다.</li>
+<h1 id="&#48708;&#54924;&#50896;-&#44256;&#44061;-&#54617;&#49845;-&#45936;&#51060;&#53552;-&#44396;&#49457;">&#48708;&#54924;&#50896; &#44256;&#44061; &#54617;&#49845; &#45936;&#51060;&#53552; &#44396;&#49457;<a class="anchor-link" href="#&#48708;&#54924;&#50896;-&#44256;&#44061;-&#54617;&#49845;-&#45936;&#51060;&#53552;-&#44396;&#49457;">&#182;</a></h1><ul>
+<li>트래커 모델에 의해 비회원 고객의 고객 유형(<code>clnt_type</code>)이 예측되었습니다.</li>
+<li>상품 추천 모델에 맞게 비회원 고객 학습 데이터를 구성합니다.</li>
 </ul>
 
 </div>
@@ -13266,7 +13265,10 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#45348;&#48708;&#44172;&#51060;&#53552;-&#47784;&#45944;&#51012;-&#50948;&#54620;-&#45936;&#51060;&#53552;&#54532;&#47112;&#51076;-&#49373;&#49457;">&#45348;&#48708;&#44172;&#51060;&#53552; &#47784;&#45944;&#51012; &#50948;&#54620; &#45936;&#51060;&#53552;&#54532;&#47112;&#51076; &#49373;&#49457;<a class="anchor-link" href="#&#45348;&#48708;&#44172;&#51060;&#53552;-&#47784;&#45944;&#51012;-&#50948;&#54620;-&#45936;&#51060;&#53552;&#54532;&#47112;&#51076;-&#49373;&#49457;">&#182;</a></h1>
+<h1 id="&#45348;&#48708;&#44172;&#51060;&#53552;-&#47784;&#45944;&#51012;-&#50948;&#54620;-&#45936;&#51060;&#53552;&#54532;&#47112;&#51076;-&#49373;&#49457;">&#45348;&#48708;&#44172;&#51060;&#53552; &#47784;&#45944;&#51012; &#50948;&#54620; &#45936;&#51060;&#53552;&#54532;&#47112;&#51076; &#49373;&#49457;<a class="anchor-link" href="#&#45348;&#48708;&#44172;&#51060;&#53552;-&#47784;&#45944;&#51012;-&#50948;&#54620;-&#45936;&#51060;&#53552;&#54532;&#47112;&#51076;-&#49373;&#49457;">&#182;</a></h1><ul>
+<li>네비게이터 모델은 맞춤 상품 추천 모델의 별칭입니다.</li>
+</ul>
+
 </div>
 </div>
 </div>
@@ -13282,13 +13284,13 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df3_unknown</span> <span class="o">=</span> <span class="n">df3custom</span><span class="p">[</span><span class="n">df3custom</span><span class="p">[</span><span class="s1">&#39;clnt_gender&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span> <span class="c1"># 비회원만 가져온다</span>
-<span class="n">df3_unknown</span> <span class="o">=</span> <span class="n">df3_unknown</span><span class="p">[</span><span class="n">df3_unknown</span><span class="p">[</span><span class="s1">&#39;clnt_age&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="c1"># 10대를 제거한다</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df3_unknown</span> <span class="o">=</span> <span class="n">df3custom</span><span class="p">[</span><span class="n">df3custom</span><span class="p">[</span><span class="s1">&#39;clnt_gender&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span> <span class="c1"># 비회원만을 가져옵니다.</span>
+<span class="n">df3_unknown</span> <span class="o">=</span> <span class="n">df3_unknown</span><span class="p">[</span><span class="n">df3_unknown</span><span class="p">[</span><span class="s1">&#39;clnt_age&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="c1"># 10대를 제거합니다.</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df3_unknown</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="n">df3_unknown</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df3_unknown</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
 
     </div>
@@ -13312,11 +13314,11 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[4]:</div>
+    <div class="prompt"></div>
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
+<div class="output_html rendered_html output_subarea ">
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -13384,7 +13386,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[72]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">for_navi_raw</span> <span class="o">=</span> <span class="n">df1online</span><span class="p">[</span><span class="n">df1online</span><span class="p">[</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df3_unknown</span><span class="p">[</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">())]</span>
@@ -13402,7 +13404,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[5]:</div>
+    <div class="prompt output_prompt">Out[72]:</div>
 
 
 
@@ -13439,6 +13441,7 @@ div#notebook {
       <th>tot_sess_hr_v</th>
       <th>trfc_src</th>
       <th>dvc_ctg_nm</th>
+      <th>pv_hr</th>
     </tr>
   </thead>
   <tbody>
@@ -13458,6 +13461,7 @@ div#notebook {
       <td>124.0</td>
       <td>unknown</td>
       <td>mobile_app</td>
+      <td>0.112903</td>
     </tr>
     <tr>
       <td>1</td>
@@ -13475,6 +13479,7 @@ div#notebook {
       <td>124.0</td>
       <td>unknown</td>
       <td>mobile_app</td>
+      <td>0.112903</td>
     </tr>
     <tr>
       <td>2</td>
@@ -13492,6 +13497,7 @@ div#notebook {
       <td>124.0</td>
       <td>unknown</td>
       <td>mobile_app</td>
+      <td>0.112903</td>
     </tr>
     <tr>
       <td>3</td>
@@ -13509,6 +13515,7 @@ div#notebook {
       <td>424.0</td>
       <td>unknown</td>
       <td>mobile_app</td>
+      <td>0.106132</td>
     </tr>
     <tr>
       <td>4</td>
@@ -13526,6 +13533,7 @@ div#notebook {
       <td>424.0</td>
       <td>unknown</td>
       <td>mobile_app</td>
+      <td>0.106132</td>
     </tr>
   </tbody>
 </table>
@@ -13538,9 +13546,19 @@ div#notebook {
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>데이터 저장</li>
+</ul>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[73]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">for_navi_raw</span><span class="p">[[</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">,</span><span class="s1">&#39;sess_id&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;./navigator/# 식별화된 비회원 데이터_id정보.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -13566,7 +13584,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[74]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">buy_id</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
@@ -13590,15 +13608,131 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[75]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">for_navi_raw</span><span class="p">[</span><span class="s1">&#39;buy_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">for_navi_raw</span> <span class="o">=</span> <span class="n">for_navi_raw</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_id&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">buy_id</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 <span class="n">for_navi_raw</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">for_navi_raw</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[75]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>clnt_id</th>
+      <th>sess_id</th>
+      <th>hit_seq</th>
+      <th>action_type</th>
+      <th>biz_unit</th>
+      <th>sess_dt</th>
+      <th>hit_tm</th>
+      <th>hit_pss_tm</th>
+      <th>trans_id</th>
+      <th>sech_kwd</th>
+      <th>tot_pag_view_ct</th>
+      <th>tot_sess_hr_v</th>
+      <th>trfc_src</th>
+      <th>dvc_ctg_nm</th>
+      <th>pv_hr</th>
+      <th>buy_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>A01</td>
+      <td>20190911</td>
+      <td>16:14</td>
+      <td>11880</td>
+      <td>NaN</td>
+      <td>과일선물세트</td>
+      <td>14.0</td>
+      <td>124.0</td>
+      <td>unknown</td>
+      <td>mobile_app</td>
+      <td>0.112903</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>A01</td>
+      <td>20190911</td>
+      <td>16:15</td>
+      <td>22432</td>
+      <td>NaN</td>
+      <td>과일선물세트 백화점</td>
+      <td>14.0</td>
+      <td>124.0</td>
+      <td>unknown</td>
+      <td>mobile_app</td>
+      <td>0.112903</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>A01</td>
+      <td>20190911</td>
+      <td>16:15</td>
+      <td>36140</td>
+      <td>NaN</td>
+      <td>과일바구니</td>
+      <td>14.0</td>
+      <td>124.0</td>
+      <td>unknown</td>
+      <td>mobile_app</td>
+      <td>0.112903</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -13607,7 +13741,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="hit_tm_class&#48320;&#49688;-&#49373;&#49457;"><code>hit_tm_class</code>&#48320;&#49688; &#49373;&#49457;<a class="anchor-link" href="#hit_tm_class&#48320;&#49688;-&#49373;&#49457;">&#182;</a></h4><ul>
-<li><code>22:05</code>, <code>17:17</code> 등 시각으로 표현되던 <code>hit_tm</code> 변수에서 시간대만을 사용하기 위한 변수입니다.</li>
+<li><code>22:05</code>, <code>17:17</code> 등 시각으로 표현되던 <code>hit_tm</code> 변수에서 시간대만을 가져와 카테고리화 합니다.</li>
 </ul>
 
 </div>
@@ -13615,7 +13749,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[76]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">time_to_int</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -13629,13 +13763,133 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[77]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">for_navi_raw</span><span class="p">[</span><span class="s1">&#39;hit_tm_class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">for_navi_raw</span><span class="p">[</span><span class="s1">&#39;hit_tm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">time_to_int</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">for_navi_raw</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[77]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>clnt_id</th>
+      <th>sess_id</th>
+      <th>hit_seq</th>
+      <th>action_type</th>
+      <th>biz_unit</th>
+      <th>sess_dt</th>
+      <th>hit_tm</th>
+      <th>hit_pss_tm</th>
+      <th>trans_id</th>
+      <th>sech_kwd</th>
+      <th>tot_pag_view_ct</th>
+      <th>tot_sess_hr_v</th>
+      <th>trfc_src</th>
+      <th>dvc_ctg_nm</th>
+      <th>pv_hr</th>
+      <th>buy_id</th>
+      <th>hit_tm_class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>A01</td>
+      <td>20190911</td>
+      <td>16:14</td>
+      <td>11880</td>
+      <td>NaN</td>
+      <td>과일선물세트</td>
+      <td>14.0</td>
+      <td>124.0</td>
+      <td>unknown</td>
+      <td>mobile_app</td>
+      <td>0.112903</td>
+      <td>0</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>A01</td>
+      <td>20190911</td>
+      <td>16:15</td>
+      <td>22432</td>
+      <td>NaN</td>
+      <td>과일선물세트 백화점</td>
+      <td>14.0</td>
+      <td>124.0</td>
+      <td>unknown</td>
+      <td>mobile_app</td>
+      <td>0.112903</td>
+      <td>0</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>A01</td>
+      <td>20190911</td>
+      <td>16:15</td>
+      <td>36140</td>
+      <td>NaN</td>
+      <td>과일바구니</td>
+      <td>14.0</td>
+      <td>124.0</td>
+      <td>unknown</td>
+      <td>mobile_app</td>
+      <td>0.112903</td>
+      <td>0</td>
+      <td>16</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -13662,7 +13916,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[78]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">realtime_hit_pss_tm</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
@@ -13688,13 +13942,137 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[79]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">for_navi_raw</span> <span class="o">=</span> <span class="n">for_navi_raw</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_id&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">realtime_hit_pss_tm</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">for_navi_raw</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[79]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>clnt_id</th>
+      <th>sess_id</th>
+      <th>hit_seq</th>
+      <th>action_type</th>
+      <th>biz_unit</th>
+      <th>sess_dt</th>
+      <th>hit_tm</th>
+      <th>hit_pss_tm</th>
+      <th>trans_id</th>
+      <th>sech_kwd</th>
+      <th>tot_pag_view_ct</th>
+      <th>tot_sess_hr_v</th>
+      <th>trfc_src</th>
+      <th>dvc_ctg_nm</th>
+      <th>pv_hr</th>
+      <th>buy_id</th>
+      <th>hit_tm_class</th>
+      <th>realtime_hit_pss_tm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>A01</td>
+      <td>20190911</td>
+      <td>16:14</td>
+      <td>11880</td>
+      <td>NaN</td>
+      <td>과일선물세트</td>
+      <td>14.0</td>
+      <td>124.0</td>
+      <td>unknown</td>
+      <td>mobile_app</td>
+      <td>0.112903</td>
+      <td>0</td>
+      <td>16</td>
+      <td>11880.0</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>A01</td>
+      <td>20190911</td>
+      <td>16:15</td>
+      <td>22432</td>
+      <td>NaN</td>
+      <td>과일선물세트 백화점</td>
+      <td>14.0</td>
+      <td>124.0</td>
+      <td>unknown</td>
+      <td>mobile_app</td>
+      <td>0.112903</td>
+      <td>0</td>
+      <td>16</td>
+      <td>22432.0</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>A01</td>
+      <td>20190911</td>
+      <td>16:15</td>
+      <td>36140</td>
+      <td>NaN</td>
+      <td>과일바구니</td>
+      <td>14.0</td>
+      <td>124.0</td>
+      <td>unknown</td>
+      <td>mobile_app</td>
+      <td>0.112903</td>
+      <td>0</td>
+      <td>16</td>
+      <td>36140.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -13711,7 +14089,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[80]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">realtime_hit_seq</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
@@ -13737,13 +14115,145 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[81]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">for_navi_raw</span> <span class="o">=</span> <span class="n">for_navi_raw</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_id&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">realtime_hit_seq</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">for_navi_raw</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[81]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>action_type</th>
+      <th>biz_unit</th>
+      <th>buy_id</th>
+      <th>clnt_id</th>
+      <th>dvc_ctg_nm</th>
+      <th>hit_pss_tm</th>
+      <th>hit_seq</th>
+      <th>hit_tm</th>
+      <th>hit_tm_class</th>
+      <th>pv_hr</th>
+      <th>realtime_hit_pss_tm</th>
+      <th>realtime_hit_seq</th>
+      <th>realtime_tot_pag_v</th>
+      <th>sech_kwd</th>
+      <th>sess_dt</th>
+      <th>sess_id</th>
+      <th>tot_pag_view_ct</th>
+      <th>tot_sess_hr_v</th>
+      <th>trans_id</th>
+      <th>trfc_src</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>A01</td>
+      <td>0</td>
+      <td>1</td>
+      <td>mobile_app</td>
+      <td>11880</td>
+      <td>1</td>
+      <td>16:14</td>
+      <td>16</td>
+      <td>0.112903</td>
+      <td>11880.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>과일선물세트</td>
+      <td>20190911</td>
+      <td>1</td>
+      <td>14.0</td>
+      <td>124.0</td>
+      <td>NaN</td>
+      <td>unknown</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0</td>
+      <td>A01</td>
+      <td>0</td>
+      <td>1</td>
+      <td>mobile_app</td>
+      <td>22432</td>
+      <td>2</td>
+      <td>16:15</td>
+      <td>16</td>
+      <td>0.112903</td>
+      <td>22432.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>과일선물세트 백화점</td>
+      <td>20190911</td>
+      <td>1</td>
+      <td>14.0</td>
+      <td>124.0</td>
+      <td>NaN</td>
+      <td>unknown</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>0</td>
+      <td>A01</td>
+      <td>0</td>
+      <td>1</td>
+      <td>mobile_app</td>
+      <td>36140</td>
+      <td>3</td>
+      <td>16:15</td>
+      <td>16</td>
+      <td>0.112903</td>
+      <td>36140.0</td>
+      <td>NaN</td>
+      <td>3.0</td>
+      <td>과일바구니</td>
+      <td>20190911</td>
+      <td>1</td>
+      <td>14.0</td>
+      <td>124.0</td>
+      <td>NaN</td>
+      <td>unknown</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -13752,7 +14262,8 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h5 id="realtime_num_kwds"><code>realtime_num_kwds</code><a class="anchor-link" href="#realtime_num_kwds">&#182;</a></h5><ul>
-<li>구매 발생까지의 검색 행동을 한 횟수</li>
+<li>세션 내 구매가 발생하기까지 검색 행동을 한 횟수입니다.</li>
+<li>세션에서 구매완료 행동을 하기 까지 3번의 검색을 했다 =&gt; <code>realtime_num_kwds</code> = 3</li>
 </ul>
 
 </div>
@@ -13760,10 +14271,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[82]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">for_navi_raw</span><span class="p">[</span><span class="s1">&#39;realtime_num_kwds&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># 초기값을 넣어줌</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">for_navi_raw</span><span class="p">[</span><span class="s1">&#39;realtime_num_kwds&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># 초기값을 넣어준다</span>
 </pre></div>
 
     </div>
@@ -13773,7 +14284,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[83]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">realtime_num_kwds</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
@@ -13791,13 +14302,107 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[84]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">for_navi_raw</span> <span class="o">=</span> <span class="n">for_navi_raw</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_id&#39;</span><span class="p">,</span> <span class="s1">&#39;buy_id&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">realtime_num_kwds</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># for_navi_raw = for_navi_raw.groupby([&#39;clnt_id&#39;, &#39;sess_id&#39;, &#39;buy_id&#39;]).apply(lambda x: realtime_num_kwds(x))</span>
+<span class="n">for_navi_raw</span><span class="p">[[</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_id&#39;</span><span class="p">,</span> <span class="s1">&#39;hit_seq&#39;</span><span class="p">,</span> <span class="s1">&#39;action_type&#39;</span><span class="p">,</span> <span class="s1">&#39;sech_kwd&#39;</span><span class="p">,</span> <span class="s1">&#39;realtime_num_kwds&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[84]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>clnt_id</th>
+      <th>sess_id</th>
+      <th>hit_seq</th>
+      <th>action_type</th>
+      <th>sech_kwd</th>
+      <th>realtime_num_kwds</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>과일선물세트</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>과일선물세트 백화점</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>과일바구니</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>초등가을잠바</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>초등가을점퍼</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -13829,7 +14434,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[85]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">latest_kwds</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
@@ -13852,7 +14457,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[86]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 먼저 latest_kwd_x 컬럼 생성</span>
@@ -13867,13 +14472,137 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[87]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">for_navi_raw</span> <span class="o">=</span> <span class="n">for_navi_raw</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_id&#39;</span><span class="p">,</span> <span class="s1">&#39;buy_id&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">latest_kwds</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">for_navi_raw</span><span class="p">[[</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_id&#39;</span><span class="p">,</span> <span class="s1">&#39;hit_seq&#39;</span><span class="p">,</span> <span class="s1">&#39;action_type&#39;</span><span class="p">,</span> <span class="s1">&#39;sech_kwd&#39;</span><span class="p">,</span> <span class="s1">&#39;latest_kwd_1&#39;</span><span class="p">,</span> <span class="s1">&#39;latest_kwd_2&#39;</span><span class="p">,</span> <span class="s1">&#39;latest_kwd_3&#39;</span><span class="p">,</span> <span class="s1">&#39;latest_kwd_4&#39;</span><span class="p">,</span> <span class="s1">&#39;latest_kwd_5&#39;</span><span class="p">,</span> <span class="s1">&#39;latest_kwd_6&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[87]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>clnt_id</th>
+      <th>sess_id</th>
+      <th>hit_seq</th>
+      <th>action_type</th>
+      <th>sech_kwd</th>
+      <th>latest_kwd_1</th>
+      <th>latest_kwd_2</th>
+      <th>latest_kwd_3</th>
+      <th>latest_kwd_4</th>
+      <th>latest_kwd_5</th>
+      <th>latest_kwd_6</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>과일선물세트</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>과일선물세트 백화점</td>
+      <td>과일선물세트</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>과일바구니</td>
+      <td>과일선물세트 백화점</td>
+      <td>과일선물세트</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>초등가을잠바</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>초등가을점퍼</td>
+      <td>초등가을잠바</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -13891,6 +14620,7 @@ div#notebook {
 <ul>
 <li>온라인행동데이터에 <code>pv_hr</code>변수를 생성합니다</li>
 <li><code>pv_hr</code>은 세션내 총페이지뷰수/총 세션시간 으로, 단위 페이지당 머무른 시간, 즉, 서핑속도를 의미합니다.</li>
+<li><code>latest_pv_hr</code>은 고객의 최근 세 페이지 서핑 속도를 반영합니다.</li>
 </ul>
 
 </div>
@@ -13898,7 +14628,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[88]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df1online</span><span class="p">[</span><span class="s1">&#39;pv_hr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df1online</span><span class="p">[</span><span class="s1">&#39;tot_pag_view_ct&#39;</span><span class="p">]</span> <span class="o">/</span>  <span class="n">df1online</span><span class="p">[</span><span class="s1">&#39;tot_sess_hr_v&#39;</span><span class="p">]</span>
@@ -13911,26 +14641,101 @@ div#notebook {
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[88]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>clnt_id</th>
+      <th>sess_id</th>
+      <th>tot_pag_view_ct</th>
+      <th>tot_sess_hr_v</th>
+      <th>pv_hr</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>14.0</td>
+      <td>124.0</td>
+      <td>0.112903</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>45.0</td>
+      <td>424.0</td>
+      <td>0.106132</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>61.0</td>
+      <td>911.0</td>
+      <td>0.066959</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2</td>
+      <td>2</td>
+      <td>12.0</td>
+      <td>134.0</td>
+      <td>0.089552</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>2</td>
+      <td>3</td>
+      <td>12.0</td>
+      <td>942.0</td>
+      <td>0.012739</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[89]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">for_navi_raw</span> <span class="o">=</span> <span class="n">for_navi_raw</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_pv_hr</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">for_navi_raw</span><span class="p">[</span><span class="s1">&#39;latest_pv_hr_1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">for_navi_raw</span><span class="p">[</span><span class="s1">&#39;latest_pv_hr_1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">for_navi_raw</span><span class="p">[</span><span class="s1">&#39;latest_pv_hr_2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">for_navi_raw</span><span class="p">[</span><span class="s1">&#39;latest_pv_hr_3&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">for_navi_raw</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -13940,10 +14745,247 @@ div#notebook {
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[89]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>action_type</th>
+      <th>biz_unit</th>
+      <th>buy_id</th>
+      <th>clnt_id</th>
+      <th>dvc_ctg_nm</th>
+      <th>hit_pss_tm</th>
+      <th>hit_seq</th>
+      <th>hit_tm</th>
+      <th>hit_tm_class</th>
+      <th>pv_hr</th>
+      <th>realtime_hit_pss_tm</th>
+      <th>realtime_hit_seq</th>
+      <th>realtime_tot_pag_v</th>
+      <th>sech_kwd</th>
+      <th>sess_dt</th>
+      <th>sess_id</th>
+      <th>tot_pag_view_ct</th>
+      <th>tot_sess_hr_v</th>
+      <th>trans_id</th>
+      <th>trfc_src</th>
+      <th>realtime_num_kwds</th>
+      <th>latest_kwd_1</th>
+      <th>latest_kwd_2</th>
+      <th>latest_kwd_3</th>
+      <th>latest_kwd_4</th>
+      <th>latest_kwd_5</th>
+      <th>latest_kwd_6</th>
+      <th>latest_pv_hr_1</th>
+      <th>latest_pv_hr_2</th>
+      <th>latest_pv_hr_3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>A01</td>
+      <td>0</td>
+      <td>1</td>
+      <td>mobile_app</td>
+      <td>11880</td>
+      <td>1</td>
+      <td>16:14</td>
+      <td>16</td>
+      <td>0.112903</td>
+      <td>11880.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>과일선물세트</td>
+      <td>20190911</td>
+      <td>1</td>
+      <td>14.0</td>
+      <td>124.0</td>
+      <td>NaN</td>
+      <td>unknown</td>
+      <td>0</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0</td>
+      <td>A01</td>
+      <td>0</td>
+      <td>1</td>
+      <td>mobile_app</td>
+      <td>22432</td>
+      <td>2</td>
+      <td>16:15</td>
+      <td>16</td>
+      <td>0.112903</td>
+      <td>22432.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>과일선물세트 백화점</td>
+      <td>20190911</td>
+      <td>1</td>
+      <td>14.0</td>
+      <td>124.0</td>
+      <td>NaN</td>
+      <td>unknown</td>
+      <td>0</td>
+      <td>과일선물세트</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>0</td>
+      <td>A01</td>
+      <td>0</td>
+      <td>1</td>
+      <td>mobile_app</td>
+      <td>36140</td>
+      <td>3</td>
+      <td>16:15</td>
+      <td>16</td>
+      <td>0.112903</td>
+      <td>36140.0</td>
+      <td>NaN</td>
+      <td>3.0</td>
+      <td>과일바구니</td>
+      <td>20190911</td>
+      <td>1</td>
+      <td>14.0</td>
+      <td>124.0</td>
+      <td>NaN</td>
+      <td>unknown</td>
+      <td>0</td>
+      <td>과일선물세트 백화점</td>
+      <td>과일선물세트</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>0</td>
+      <td>A01</td>
+      <td>0</td>
+      <td>1</td>
+      <td>mobile_app</td>
+      <td>41584</td>
+      <td>1</td>
+      <td>14:09</td>
+      <td>14</td>
+      <td>0.106132</td>
+      <td>41584.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>초등가을잠바</td>
+      <td>20190922</td>
+      <td>2</td>
+      <td>45.0</td>
+      <td>424.0</td>
+      <td>NaN</td>
+      <td>unknown</td>
+      <td>0</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>0</td>
+      <td>A01</td>
+      <td>0</td>
+      <td>1</td>
+      <td>mobile_app</td>
+      <td>56113</td>
+      <td>2</td>
+      <td>14:10</td>
+      <td>14</td>
+      <td>0.106132</td>
+      <td>56113.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>초등가을점퍼</td>
+      <td>20190922</td>
+      <td>2</td>
+      <td>45.0</td>
+      <td>424.0</td>
+      <td>NaN</td>
+      <td>unknown</td>
+      <td>0</td>
+      <td>초등가을잠바</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[90]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># clnt_id로 그룹화</span>
@@ -13964,13 +15006,251 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[91]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">for_navi_raw</span> <span class="o">=</span> <span class="n">for_navi_raw</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="n">latest_pv_hr</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">for_navi_raw</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[91]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>action_type</th>
+      <th>biz_unit</th>
+      <th>buy_id</th>
+      <th>clnt_id</th>
+      <th>dvc_ctg_nm</th>
+      <th>hit_pss_tm</th>
+      <th>hit_seq</th>
+      <th>hit_tm</th>
+      <th>hit_tm_class</th>
+      <th>pv_hr</th>
+      <th>realtime_hit_pss_tm</th>
+      <th>realtime_hit_seq</th>
+      <th>realtime_tot_pag_v</th>
+      <th>sech_kwd</th>
+      <th>sess_dt</th>
+      <th>sess_id</th>
+      <th>tot_pag_view_ct</th>
+      <th>tot_sess_hr_v</th>
+      <th>trans_id</th>
+      <th>trfc_src</th>
+      <th>realtime_num_kwds</th>
+      <th>latest_kwd_1</th>
+      <th>latest_kwd_2</th>
+      <th>latest_kwd_3</th>
+      <th>latest_kwd_4</th>
+      <th>latest_kwd_5</th>
+      <th>latest_kwd_6</th>
+      <th>latest_pv_hr_1</th>
+      <th>latest_pv_hr_2</th>
+      <th>latest_pv_hr_3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>A01</td>
+      <td>0</td>
+      <td>1</td>
+      <td>mobile_app</td>
+      <td>11880</td>
+      <td>1</td>
+      <td>16:14</td>
+      <td>16</td>
+      <td>0.112903</td>
+      <td>11880.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>과일선물세트</td>
+      <td>20190911</td>
+      <td>1</td>
+      <td>14.0</td>
+      <td>124.0</td>
+      <td>NaN</td>
+      <td>unknown</td>
+      <td>0</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0</td>
+      <td>A01</td>
+      <td>0</td>
+      <td>1</td>
+      <td>mobile_app</td>
+      <td>22432</td>
+      <td>2</td>
+      <td>16:15</td>
+      <td>16</td>
+      <td>0.112903</td>
+      <td>22432.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>과일선물세트 백화점</td>
+      <td>20190911</td>
+      <td>1</td>
+      <td>14.0</td>
+      <td>124.0</td>
+      <td>NaN</td>
+      <td>unknown</td>
+      <td>0</td>
+      <td>과일선물세트</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>0</td>
+      <td>A01</td>
+      <td>0</td>
+      <td>1</td>
+      <td>mobile_app</td>
+      <td>36140</td>
+      <td>3</td>
+      <td>16:15</td>
+      <td>16</td>
+      <td>0.112903</td>
+      <td>36140.0</td>
+      <td>NaN</td>
+      <td>3.0</td>
+      <td>과일바구니</td>
+      <td>20190911</td>
+      <td>1</td>
+      <td>14.0</td>
+      <td>124.0</td>
+      <td>NaN</td>
+      <td>unknown</td>
+      <td>0</td>
+      <td>과일선물세트 백화점</td>
+      <td>과일선물세트</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>0</td>
+      <td>A01</td>
+      <td>0</td>
+      <td>1</td>
+      <td>mobile_app</td>
+      <td>41584</td>
+      <td>1</td>
+      <td>14:09</td>
+      <td>14</td>
+      <td>0.106132</td>
+      <td>41584.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>초등가을잠바</td>
+      <td>20190922</td>
+      <td>2</td>
+      <td>45.0</td>
+      <td>424.0</td>
+      <td>NaN</td>
+      <td>unknown</td>
+      <td>0</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>0.112903</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>0</td>
+      <td>A01</td>
+      <td>0</td>
+      <td>1</td>
+      <td>mobile_app</td>
+      <td>56113</td>
+      <td>2</td>
+      <td>14:10</td>
+      <td>14</td>
+      <td>0.106132</td>
+      <td>56113.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>초등가을점퍼</td>
+      <td>20190922</td>
+      <td>2</td>
+      <td>45.0</td>
+      <td>424.0</td>
+      <td>NaN</td>
+      <td>unknown</td>
+      <td>0</td>
+      <td>초등가을잠바</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>0.112903</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -13989,7 +15269,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[92]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_hot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./DATA/외부데이터_더위체감지수(정오기준).csv&#39;</span><span class="p">)</span>
@@ -14003,79 +15283,278 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">for_navi_raw</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[93]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">for_navi_raw</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;sess_dt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">for_navi_raw</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;sess_dt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">for_navi_raw</span> <span class="o">=</span> <span class="n">for_navi_raw</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_hot</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;sess_dt&#39;</span><span class="p">)</span>
+<span class="n">for_navi_raw</span> <span class="o">=</span> <span class="n">for_navi_raw</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_hot</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;sess_dt&#39;</span><span class="p">)</span>
 <span class="n">for_navi_raw</span> <span class="o">=</span> <span class="n">for_navi_raw</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_dust</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;sess_dt&#39;</span><span class="p">)</span>
+<span class="n">for_navi_raw</span><span class="p">[</span><span class="s1">&#39;weekday&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">for_navi_raw</span><span class="p">[</span><span class="s1">&#39;sess_dt&#39;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y%m</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">weekday</span><span class="p">())</span>
+<span class="n">for_navi_raw</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">for_navi_raw</span><span class="p">[</span><span class="s1">&#39;sess_dt&#39;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y%m</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">weekday</span><span class="p">())</span>
-</pre></div>
+<div class="output_wrapper">
+<div class="output">
 
-    </div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[93]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>action_type</th>
+      <th>biz_unit</th>
+      <th>buy_id</th>
+      <th>clnt_id</th>
+      <th>dvc_ctg_nm</th>
+      <th>hit_pss_tm</th>
+      <th>hit_seq</th>
+      <th>hit_tm</th>
+      <th>hit_tm_class</th>
+      <th>pv_hr</th>
+      <th>realtime_hit_pss_tm</th>
+      <th>realtime_hit_seq</th>
+      <th>realtime_tot_pag_v</th>
+      <th>sech_kwd</th>
+      <th>sess_dt</th>
+      <th>sess_id</th>
+      <th>tot_pag_view_ct</th>
+      <th>tot_sess_hr_v</th>
+      <th>trans_id</th>
+      <th>trfc_src</th>
+      <th>realtime_num_kwds</th>
+      <th>latest_kwd_1</th>
+      <th>latest_kwd_2</th>
+      <th>latest_kwd_3</th>
+      <th>latest_kwd_4</th>
+      <th>latest_kwd_5</th>
+      <th>latest_kwd_6</th>
+      <th>latest_pv_hr_1</th>
+      <th>latest_pv_hr_2</th>
+      <th>latest_pv_hr_3</th>
+      <th>scorch</th>
+      <th>pm2.5</th>
+      <th>pm10</th>
+      <th>weekday</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>A01</td>
+      <td>0</td>
+      <td>1</td>
+      <td>mobile_app</td>
+      <td>11880</td>
+      <td>1</td>
+      <td>16:14</td>
+      <td>16</td>
+      <td>0.112903</td>
+      <td>11880.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>과일선물세트</td>
+      <td>20190911</td>
+      <td>1</td>
+      <td>14.0</td>
+      <td>124.0</td>
+      <td>NaN</td>
+      <td>unknown</td>
+      <td>0</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>25</td>
+      <td>4</td>
+      <td>8</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0</td>
+      <td>A01</td>
+      <td>0</td>
+      <td>1</td>
+      <td>mobile_app</td>
+      <td>22432</td>
+      <td>2</td>
+      <td>16:15</td>
+      <td>16</td>
+      <td>0.112903</td>
+      <td>22432.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>과일선물세트 백화점</td>
+      <td>20190911</td>
+      <td>1</td>
+      <td>14.0</td>
+      <td>124.0</td>
+      <td>NaN</td>
+      <td>unknown</td>
+      <td>0</td>
+      <td>과일선물세트</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>25</td>
+      <td>4</td>
+      <td>8</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>0</td>
+      <td>A01</td>
+      <td>0</td>
+      <td>1</td>
+      <td>mobile_app</td>
+      <td>36140</td>
+      <td>3</td>
+      <td>16:15</td>
+      <td>16</td>
+      <td>0.112903</td>
+      <td>36140.0</td>
+      <td>NaN</td>
+      <td>3.0</td>
+      <td>과일바구니</td>
+      <td>20190911</td>
+      <td>1</td>
+      <td>14.0</td>
+      <td>124.0</td>
+      <td>NaN</td>
+      <td>unknown</td>
+      <td>0</td>
+      <td>과일선물세트 백화점</td>
+      <td>과일선물세트</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>25</td>
+      <td>4</td>
+      <td>8</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>0</td>
+      <td>A01</td>
+      <td>0</td>
+      <td>1</td>
+      <td>mobile_app</td>
+      <td>41584</td>
+      <td>1</td>
+      <td>14:09</td>
+      <td>14</td>
+      <td>0.106132</td>
+      <td>41584.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>초등가을잠바</td>
+      <td>20190922</td>
+      <td>2</td>
+      <td>45.0</td>
+      <td>424.0</td>
+      <td>NaN</td>
+      <td>unknown</td>
+      <td>0</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>0.112903</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>16</td>
+      <td>3</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>0</td>
+      <td>A01</td>
+      <td>0</td>
+      <td>1</td>
+      <td>mobile_app</td>
+      <td>56113</td>
+      <td>2</td>
+      <td>14:10</td>
+      <td>14</td>
+      <td>0.106132</td>
+      <td>56113.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>초등가을점퍼</td>
+      <td>20190922</td>
+      <td>2</td>
+      <td>45.0</td>
+      <td>424.0</td>
+      <td>NaN</td>
+      <td>unknown</td>
+      <td>0</td>
+      <td>초등가을잠바</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>0.112903</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>16</td>
+      <td>3</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
 </div>
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">for_navi_raw</span><span class="p">[</span><span class="s1">&#39;weekday&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">for_navi_raw</span><span class="p">[</span><span class="s1">&#39;sess_dt&#39;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y%m</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">weekday</span><span class="p">())</span>
-</pre></div>
 
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">for_navi_raw</span><span class="o">.</span><span class="n">columns</span>
-</pre></div>
-
-    </div>
 </div>
 </div>
 
@@ -14083,7 +15562,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="df3_unknown&#44284;-&#48337;&#54633;(clnt_type-&#48512;&#50668;)">df3_unknown&#44284; &#48337;&#54633;(clnt_type &#48512;&#50668;)<a class="anchor-link" href="#df3_unknown&#44284;-&#48337;&#54633;(clnt_type-&#48512;&#50668;)">&#182;</a></h4><ul>
+<h4 id="df3_unknown&#44284;-&#48337;&#54633;">df3_unknown&#44284; &#48337;&#54633;<a class="anchor-link" href="#df3_unknown&#44284;-&#48337;&#54633;">&#182;</a></h4><ul>
 <li>트래커 모델에 의해 예측된 고객 유형(<code>clnt_type</code>)을 merge합니다.</li>
 </ul>
 
@@ -14092,7 +15571,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[94]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tracked</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./tracker/tracked.csv&#39;</span><span class="p">)</span>
@@ -14104,26 +15583,83 @@ div#notebook {
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[94]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>clnt_id</th>
+      <th>clnt_type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>3</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>4</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>5</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>6</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[95]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">for_navi_raw</span> <span class="o">=</span> <span class="n">for_navi_raw</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">tracked</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;clnt_id&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">for_navi_raw</span> <span class="o">=</span> <span class="n">for_navi_raw</span><span class="p">[[</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">,</span> <span class="s1">&#39;clnt_type&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_id&#39;</span><span class="p">,</span> <span class="s1">&#39;hit_seq&#39;</span><span class="p">,</span> <span class="s1">&#39;action_type&#39;</span><span class="p">,</span> <span class="s1">&#39;biz_unit&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_dt&#39;</span><span class="p">,</span>
+<span class="n">for_navi_raw</span> <span class="o">=</span> <span class="n">for_navi_raw</span><span class="p">[[</span><span class="s1">&#39;clnt_id&#39;</span><span class="p">,</span> <span class="s1">&#39;clnt_type&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_id&#39;</span><span class="p">,</span> <span class="s1">&#39;hit_seq&#39;</span><span class="p">,</span> <span class="s1">&#39;action_type&#39;</span><span class="p">,</span> <span class="s1">&#39;biz_unit&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_dt&#39;</span><span class="p">,</span>
        <span class="s1">&#39;hit_tm&#39;</span><span class="p">,</span> <span class="s1">&#39;hit_pss_tm&#39;</span><span class="p">,</span> <span class="s1">&#39;trans_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sech_kwd&#39;</span><span class="p">,</span> <span class="s1">&#39;tot_pag_view_ct&#39;</span><span class="p">,</span>
        <span class="s1">&#39;tot_sess_hr_v&#39;</span><span class="p">,</span> <span class="s1">&#39;trfc_src&#39;</span><span class="p">,</span> <span class="s1">&#39;dvc_ctg_nm&#39;</span><span class="p">,</span> <span class="s1">&#39;buy_id&#39;</span><span class="p">,</span> <span class="s1">&#39;hit_tm_class&#39;</span><span class="p">,</span>
        <span class="s1">&#39;realtime_num_kwds&#39;</span><span class="p">,</span> <span class="s1">&#39;realtime_hit_pss_tm&#39;</span><span class="p">,</span> <span class="s1">&#39;latest_kwd_1&#39;</span><span class="p">,</span>
@@ -14150,7 +15686,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[96]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">for_navi</span> <span class="o">=</span> <span class="n">for_navi_raw</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;trans_id&#39;</span><span class="p">,</span> <span class="s1">&#39;hit_tm&#39;</span><span class="p">,</span> <span class="s1">&#39;sech_kwd&#39;</span><span class="p">,</span> <span class="s1">&#39;sess_dt&#39;</span><span class="p">,</span> <span class="s1">&#39;clnt_id&#39;</span><span class="p">,</span> <span class="s1">&#39;tot_pag_view_ct&#39;</span><span class="p">,</span> <span class="s1">&#39;tot_sess_hr_v&#39;</span><span class="p">,</span> <span class="s1">&#39;buy_id&#39;</span><span class="p">,</span> <span class="s1">&#39;pv_hr&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
@@ -14161,10 +15697,217 @@ div#notebook {
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[96]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>clnt_type</th>
+      <th>sess_id</th>
+      <th>hit_seq</th>
+      <th>action_type</th>
+      <th>biz_unit</th>
+      <th>hit_pss_tm</th>
+      <th>trfc_src</th>
+      <th>dvc_ctg_nm</th>
+      <th>hit_tm_class</th>
+      <th>realtime_num_kwds</th>
+      <th>realtime_hit_pss_tm</th>
+      <th>latest_kwd_1</th>
+      <th>latest_kwd_2</th>
+      <th>latest_kwd_3</th>
+      <th>latest_kwd_4</th>
+      <th>latest_kwd_5</th>
+      <th>latest_kwd_6</th>
+      <th>latest_pv_hr_1</th>
+      <th>latest_pv_hr_2</th>
+      <th>latest_pv_hr_3</th>
+      <th>realtime_hit_seq</th>
+      <th>scorch</th>
+      <th>pm2.5</th>
+      <th>pm10</th>
+      <th>weekday</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>A01</td>
+      <td>11880</td>
+      <td>unknown</td>
+      <td>mobile_app</td>
+      <td>16</td>
+      <td>0</td>
+      <td>11880.0</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>25</td>
+      <td>4</td>
+      <td>8</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>A01</td>
+      <td>22432</td>
+      <td>unknown</td>
+      <td>mobile_app</td>
+      <td>16</td>
+      <td>0</td>
+      <td>22432.0</td>
+      <td>과일선물세트</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>25</td>
+      <td>4</td>
+      <td>8</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>A01</td>
+      <td>36140</td>
+      <td>unknown</td>
+      <td>mobile_app</td>
+      <td>16</td>
+      <td>0</td>
+      <td>36140.0</td>
+      <td>과일선물세트 백화점</td>
+      <td>과일선물세트</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>25</td>
+      <td>4</td>
+      <td>8</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>A01</td>
+      <td>41584</td>
+      <td>unknown</td>
+      <td>mobile_app</td>
+      <td>14</td>
+      <td>0</td>
+      <td>41584.0</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>0.112903</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>16</td>
+      <td>3</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>A01</td>
+      <td>56113</td>
+      <td>unknown</td>
+      <td>mobile_app</td>
+      <td>14</td>
+      <td>0</td>
+      <td>56113.0</td>
+      <td>초등가을잠바</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>0.112903</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>16</td>
+      <td>3</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[97]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="k">import</span> <span class="n">LabelEncoder</span>
@@ -14204,7 +15947,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[98]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">for_navi</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -14214,16 +15957,210 @@ div#notebook {
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">for_navi</span><span class="o">.</span><span class="n">columns</span>
-</pre></div>
+<div class="output_wrapper">
+<div class="output">
 
-    </div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[98]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>clnt_type</th>
+      <th>sess_id</th>
+      <th>hit_seq</th>
+      <th>action_type</th>
+      <th>biz_unit</th>
+      <th>hit_pss_tm</th>
+      <th>trfc_src</th>
+      <th>dvc_ctg_nm</th>
+      <th>hit_tm_class</th>
+      <th>realtime_num_kwds</th>
+      <th>realtime_hit_pss_tm</th>
+      <th>latest_kwd_1</th>
+      <th>latest_kwd_2</th>
+      <th>latest_kwd_3</th>
+      <th>latest_kwd_4</th>
+      <th>latest_kwd_5</th>
+      <th>latest_kwd_6</th>
+      <th>latest_pv_hr_1</th>
+      <th>latest_pv_hr_2</th>
+      <th>latest_pv_hr_3</th>
+      <th>realtime_hit_seq</th>
+      <th>scorch</th>
+      <th>pm2.5</th>
+      <th>pm10</th>
+      <th>weekday</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>11880</td>
+      <td>6</td>
+      <td>1</td>
+      <td>16</td>
+      <td>0</td>
+      <td>11880.0</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>25</td>
+      <td>4</td>
+      <td>8</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>22432</td>
+      <td>6</td>
+      <td>1</td>
+      <td>16</td>
+      <td>0</td>
+      <td>22432.0</td>
+      <td>15133</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>25</td>
+      <td>4</td>
+      <td>8</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>36140</td>
+      <td>6</td>
+      <td>1</td>
+      <td>16</td>
+      <td>0</td>
+      <td>36140.0</td>
+      <td>15134</td>
+      <td>15133</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>25</td>
+      <td>4</td>
+      <td>8</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>41584</td>
+      <td>6</td>
+      <td>1</td>
+      <td>14</td>
+      <td>0</td>
+      <td>41584.0</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>0.112903</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>16</td>
+      <td>3</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>56113</td>
+      <td>6</td>
+      <td>1</td>
+      <td>14</td>
+      <td>0</td>
+      <td>56113.0</td>
+      <td>81935</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>0.112903</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>16</td>
+      <td>3</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
