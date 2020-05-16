@@ -1,6 +1,6 @@
 # 프로젝트 소개  
 제6회 빅데이터 컴피티션에서 최우수상을 수상한 코드입니다. 코드에 대한 저작권은 채고선 팀의 팀원 이형선, 고지형, 채운슬에게 있습니다. 원본 데이터의 소유권은 (주)롯데멤버스에 있으니, 코드 재현을 위해서는 주최측에 따로 문의하셔야 합니다.  
-This codes won the 6th Bigdata Competition of Lotte Members. Hyeongson Lee, Jihyeong Ko, Unseul Chae of the team 'CHAE-KO-SUN' have the license of these codes. Also, when using data, you have to contact Lotte Members which owns the license.
+This codes won 2nd placde in the 6th Bigdata Competition of Lotte Members. Hyeongson Lee, Jihyeong Ko, Unseul Chae of the team 'CHAE-KO-SUN' have the license of these codes. Also, when using data, you have to contact Lotte Members which owns the license.
 
 # 프로젝트 기간  
 2019년 12월 ~ 2020년 2월
