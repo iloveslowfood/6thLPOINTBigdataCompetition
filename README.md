@@ -1,5 +1,5 @@
 # Introduction  
-[(주)롯데멤버스](https://www.lpoint.com/)에서 주최한 제 [6회 빅데이터 컴피티션](https://competition.lpoint.com/index.tran)에서 최우수상을 수상한 코드입니다. 코드에 대한 저작권은 채고선 팀의 팀원 이형선, 고지형, 채운슬에게 있습니다. 원본 데이터의 소유권은 (주)롯데멤버스에 있으니, 코드 재현을 위해서는 주최측에 따로 문의하셔야 합니다.  
+[(주)롯데멤버스](https://www.lpoint.com/)에서 주최한 [제 6회 빅데이터 컴피티션](https://competition.lpoint.com/index.tran)에서 최우수상을 수상한 코드입니다. 코드에 대한 저작권은 채고선 팀의 팀원 이형선, 고지형, 채운슬에게 있습니다. 원본 데이터의 소유권은 (주)롯데멤버스에 있으니, 코드 재현을 위해서는 주최측에 따로 문의하셔야 합니다.  
 This codes won the 2nd place in the 6th Bigdata Competition of Lotte Members. Hyeongson Lee, Jihyeong Ko, Unseul Chae of the team 'CHAE-KO-SUN' have the license of these codes. Also, when using data, you have to contact Lotte Members which owns the license.
 
 # Period  
