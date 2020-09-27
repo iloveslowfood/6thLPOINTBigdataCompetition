@@ -6,10 +6,10 @@
 * Jihyeong Ko, Hyeongson Lee, Unseul Chae of the team 'CHAE-KO-SUN' have the license of these codes.
 * If you want to use these datasets, you have to contact the company [Lotte Members](https://www.lpoint.com/app/global/LHGA100100.do?globalFlag=ENG) which owns the license.
 
-# Period  
+## Period  
 2019.11.27~2020.02.03
 
-# People
+## People
 고지형(본인), 이형선, 채운슬
 
 # Main Points
