@@ -2,7 +2,7 @@
 * [(주)롯데멤버스](https://www.lpoint.com/)에서 주최한 [제 6회 빅데이터 컴피티션](https://competition.lpoint.com/index.tran)에서 최우수상을 수상한 프로젝트입니다.
 * 코드에 대한 저작권은 채고선 팀(고지형, 이형선, 채운슬)에게 있습니다.
 * 원본 데이터의 소유권은 [(주)롯데멤버스](https://www.lpoint.com/)에 있으니, 코드 재현을 위해서는 주최 측에 문의하셔야 합니다.  
-* This codes won the 2nd place in [the 6th Bigdata Competition](https://competition.lpoint.com/index.tran) of the company [Lotte Members](https://www.lpoint.com/app/global/LHGA100100.do?globalFlag=ENG). 
+* This project won the 2nd place in [the 6th Bigdata Competition](https://competition.lpoint.com/index.tran) of the company [Lotte Members](https://www.lpoint.com/app/global/LHGA100100.do?globalFlag=ENG). 
 * Jihyeong Ko, Hyeongson Lee, Unseul Chae of the team 'CHAE-KO-SUN' have the license of these codes.
 * If you want to use these datasets, you have to contact the company [Lotte Members](https://www.lpoint.com/app/global/LHGA100100.do?globalFlag=ENG) which owns the license.
 
