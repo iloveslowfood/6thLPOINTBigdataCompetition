@@ -3,7 +3,7 @@
 This codes won the 2nd place in the 6th Bigdata Competition of Lotte Members. Hyeongson Lee, Jihyeong Ko, Unseul Chae of the team 'CHAE-KO-SUN' have the license of these codes. Also, when using data, you have to contact Lotte Members which owns the license.
 
 # Period  
-2019.12~2020.02
+2019.11.27~2020.02.03
 
 # People
 고지형(본인), 이형선, 채운슬
