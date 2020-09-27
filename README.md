@@ -3,7 +3,7 @@
 * 코드에 대한 저작권은 채고선 팀(고지형, 이형선, 채운슬)에게 있습니다.
 * 원본 데이터의 소유권은 [(주)롯데멤버스](https://www.lpoint.com/)에 있으니, 코드 재현을 위해서는 주최 측에 문의하셔야 합니다.  
 * This project won the 2nd place in [the 6th Bigdata Competition](https://competition.lpoint.com/index.tran) of the company [Lotte Members](https://www.lpoint.com/app/global/LHGA100100.do?globalFlag=ENG). 
-* Jihyeong Ko, Hyeongson Lee, Unseul Chae of the team 'CHAE-KO-SUN' have the license of these codes.
+* The team 'CHAE-KO-SUN'(Jihyeong Ko, Hyeongson Lee, Unseul Chae) have the license of these codes.
 * If you want to use these datasets, you have to contact the company [Lotte Members](https://www.lpoint.com/app/global/LHGA100100.do?globalFlag=ENG) which owns the license.
 
 ## Period  
