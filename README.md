@@ -6,7 +6,7 @@
 * The team 'CHAE-KO-SUN'(Jihyeong Ko, Hyeongson Lee, Unseul Chae) has the license of these codes.
 * If you want to use these datasets, you have to contact the company [Lotte Members](https://www.lpoint.com/app/global/LHGA100100.do?globalFlag=ENG) which owns the license.
 ---
-## 대회 기간
+## 🏃‍♂️대회 기간
 2019.11.27~2020.02.03
 
 ## 👩‍👧‍👧프로젝트 참여자
