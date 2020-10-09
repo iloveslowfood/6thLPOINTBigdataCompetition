@@ -6,10 +6,13 @@
 * The team 'CHAE-KO-SUN'(Jihyeong Ko, Hyeongson Lee, Unseul Chae) has the license of these codes.
 * If you want to use these datasets, you have to contact the company [Lotte Members](https://www.lpoint.com/app/global/LHGA100100.do?globalFlag=ENG) which owns the license.
 
-## 🏃‍♂️대회 기간
+## 🏃‍♂️프로젝트 기간
 2019.11.27~2020.02.03
 
-## 👩‍👧‍👧프로젝트 참여자
+## 😎프로젝트 결과
+- `결과보고서_채고선.pdf`: [최종 발표에 사용했던 결과물](https://github.com/iloveslowfood/6thLPOINTBigdataCompetition/blob/master/%EA%B2%B0%EA%B3%BC%EB%B3%B4%EA%B3%A0%EC%84%9C_%EC%B1%84%EA%B3%A0%EC%84%A0.pdf)입니다.
+
+## 👩‍👧‍👧프로젝트 참여 인원
 고지형(본인), 이형선, 채운슬
 
 ## 👀 디렉토리 구조
@@ -26,5 +29,3 @@
 - `05_고지형_네비게이터_모델_비회원고객_학습데이터_구성.ipynb`: 맞춤 상품 추천에 활용할 비회원 고객 학습데이터를 구성합니다.
 - `06_고지형_네비게이터_모델_상품추천.ipynb`: 구축한 모델을 통해 고객에게 맞춤 상품을 추천합니다.
 
-## 😎프로젝트 결과 `결과보고서_채고선.pdf`
-- 분석 과정과 모델 설명을 담고 있는 [PDF 파일](https://github.com/iloveslowfood/6thLPOINTBigdataCompetition/blob/master/%EA%B2%B0%EA%B3%BC%EB%B3%B4%EA%B3%A0%EC%84%9C_%EC%B1%84%EA%B3%A0%EC%84%A0.pdf)입니다.
