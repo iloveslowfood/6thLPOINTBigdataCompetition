@@ -10,7 +10,7 @@
 2019.11.27~2020.02.03
 
 ## 😎프로젝트 결과
-- `결과보고서_채고선.pdf`: [최종 발표에 사용했던 결과물](https://github.com/iloveslowfood/6thLPOINTBigdataCompetition/blob/master/%EA%B2%B0%EA%B3%BC%EB%B3%B4%EA%B3%A0%EC%84%9C_%EC%B1%84%EA%B3%A0%EC%84%A0.pdf)입니다.
+- `결과보고서_채고선.pdf`: [최종 발표에 활용한 결과물](https://github.com/iloveslowfood/6thLPOINTBigdataCompetition/blob/master/%EA%B2%B0%EA%B3%BC%EB%B3%B4%EA%B3%A0%EC%84%9C_%EC%B1%84%EA%B3%A0%EC%84%A0.pdf)입니다.
 
 ## 👩‍👧‍👧프로젝트 참여 인원
 고지형(본인), 이형선, 채운슬
