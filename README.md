@@ -10,7 +10,7 @@
 * 2019.11.27~2020.02.03
 
 ## 😎프로젝트 결과
-- `결과보고서_채고선.pdf`: [최종 발표에 활용한 결과물](https://github.com/iloveslowfood/6thLPOINTBigdataCompetition/blob/master/%EA%B2%B0%EA%B3%BC%EB%B3%B4%EA%B3%A0%EC%84%9C_%EC%B1%84%EA%B3%A0%EC%84%A0.pdf)입니다.  
+- `결과보고서_채고선.pdf`: [최종 발표 자료](https://github.com/iloveslowfood/6thLPOINTBigdataCompetition/blob/master/%EA%B2%B0%EA%B3%BC%EB%B3%B4%EA%B3%A0%EC%84%9C_%EC%B1%84%EA%B3%A0%EC%84%A0.pdf)입니다.  
 ![](https://github.com/iloveslowfood/6thLPOINTBigdataCompetition/blob/master/image/01.%20%EB%B9%84%ED%9A%8C%EC%9B%90%20%EC%8B%9D%EB%B3%84%20%EB%AA%A8%EB%8D%B8.png?raw=true)
 ![](https://github.com/iloveslowfood/6thLPOINTBigdataCompetition/blob/master/image/03.%20%EC%83%81%ED%92%88%20%EC%B6%94%EC%B2%9C%20%EB%AA%A8%EB%8D%B8.png?raw=true)
 ![](https://github.com/iloveslowfood/6thLPOINTBigdataCompetition/blob/master/image/05.%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%ED%99%9C%EC%9A%A9%20%EB%B0%A9%EC%95%88.png?raw=true)
