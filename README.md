@@ -10,6 +10,7 @@
 * 2019.11.27~2020.02.03
 
 ## 😎프로젝트 결과
+![](https://github.com/iloveslowfood/6thLPOINTBigdataCompetition/blob/master/image/05.%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%ED%99%9C%EC%9A%A9%20%EB%B0%A9%EC%95%88.png?raw=true)
 - `결과보고서_채고선.pdf`: [최종 발표에 활용한 결과물](https://github.com/iloveslowfood/6thLPOINTBigdataCompetition/blob/master/%EA%B2%B0%EA%B3%BC%EB%B3%B4%EA%B3%A0%EC%84%9C_%EC%B1%84%EA%B3%A0%EC%84%A0.pdf)입니다.
 
 ## 👩‍👧‍👧프로젝트 참여 인원
